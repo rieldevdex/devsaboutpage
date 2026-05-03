@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Dev — Devony Dexter · Developer</title>
+<title>Devony Dexter — Student Web & Roblox Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
@@ -12,85 +12,96 @@
 
 /* ── THEME SYSTEM ── */
 :root{
-  --bg:#05050A;--bg1:#0C0C14;--bg2:#131320;--bg3:#1A1A2A;
-  --surface:rgba(255,255,255,0.04);
-  --or:#FF5C1A;--or2:#FF8450;--or-glow:rgba(255,92,26,0.18);
-  --cy:#00D9E8;--cy2:#7AEEF6;--cy-glow:rgba(0,217,232,0.12);
-  --wh:#F0EDE6;--wh2:#B0ADA8;--mu:#555566;
-  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.12);--border3:rgba(255,255,255,0.20);
+  --bg:#050509;--bg1:rgba(16,16,26,0.78);--bg2:#151520;--bg3:#20202D;
+  --surface:rgba(255,255,255,0.055);
+  --or:#FF6A2A;--or2:#FF965F;--or-glow:rgba(255,106,42,0.16);
+  --cy:#00D9E8;--cy2:#9AF5FA;--cy-glow:rgba(0,217,232,0.10);
+  --wh:#F6F1E8;--wh2:#C5BEB4;--mu:#74717B;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);--border3:rgba(255,255,255,0.24);
+  --glass:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  --shadow:0 30px 90px rgba(0,0,0,.38);
+  --shadow-soft:0 18px 55px rgba(0,0,0,.26);
+  --radius-lg:24px;--radius-md:18px;--ease:cubic-bezier(.22,1,.36,1);
   --f1-red:#E8002D;--f1-blue:#3671C6;--rb-blue:#1E3D8F;--rb-yellow:#FFC906;
   --fire1:#FF3D00;--fire2:#FF8C00;--fire3:#FFD600;
 }
 [data-theme="light"]{
-  --bg:#F5F4F0;--bg1:#EDECEA;--bg2:#E4E3E0;--bg3:#DDDCD8;
-  --surface:rgba(0,0,0,0.04);
-  --wh:#1A1A2A;--wh2:#444455;--mu:#999AAA;
-  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.14);--border3:rgba(0,0,0,0.22);
+  --bg:#F7F4ED;--bg1:rgba(255,255,255,0.74);--bg2:#ECE8DF;--bg3:#E2DDD3;
+  --surface:rgba(0,0,0,0.035);
+  --wh:#171721;--wh2:#48454F;--mu:#8A8491;
+  --border:rgba(30,25,18,0.09);--border2:rgba(30,25,18,0.16);--border3:rgba(30,25,18,0.25);
+  --glass:linear-gradient(145deg,rgba(255,255,255,.88),rgba(255,255,255,.48));
+  --shadow:0 30px 90px rgba(90,72,48,.16);
+  --shadow-soft:0 18px 55px rgba(90,72,48,.12);
 }
 
 html{scroll-behavior:smooth;cursor:none}
-body{background:var(--bg);color:var(--wh);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;transition:background .4s,color .3s}
+body{background:radial-gradient(circle at 75% 0%,rgba(255,106,42,.09),transparent 34%),radial-gradient(circle at 12% 18%,rgba(0,217,232,.06),transparent 30%),var(--bg);color:var(--wh);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;transition:background .4s,color .3s}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(120deg,rgba(255,255,255,.035),transparent 30%,rgba(255,106,42,.025) 60%,transparent 78%);opacity:.75}
 ::selection{background:var(--or);color:#000}
 a{text-decoration:none;color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--cy);outline-offset:4px}
 
 /* ── EMBER TRAIL ── */
-#trail-canvas{position:fixed;inset:0;pointer-events:none;z-index:9990}
+#trail-canvas{position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:.78}
 
 /* ── CURSOR ── */
-#cursor-dot{position:fixed;width:8px;height:8px;background:var(--or);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .15s,height .15s,background .15s}
-#cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(255,92,26,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s,height .2s,border-color .2s}
+#cursor-dot{position:fixed;width:7px;height:7px;background:var(--or);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .18s,height .18s,background .18s,opacity .2s;box-shadow:0 0 18px var(--or-glow)}
+#cursor-ring{position:fixed;width:34px;height:34px;border:1px solid rgba(255,106,42,0.42);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .24s,height .24s,border-color .24s,opacity .2s;backdrop-filter:blur(1px)}
 body.cursor-hover #cursor-dot{width:12px;height:12px;background:var(--cy)}
 body.cursor-hover #cursor-ring{width:52px;height:52px;border-color:rgba(0,217,232,0.5)}
 body.cursor-click #cursor-dot{width:5px;height:5px}
 
 /* ── PROGRESS ── */
-#progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--or),var(--cy));width:0%;z-index:9997}
+#progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--or),var(--cy));width:0%;z-index:9997;box-shadow:0 0 18px var(--or-glow)}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,5,10,0.85);backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--border);transition:background .4s}
-[data-theme="light"] nav{background:rgba(245,244,240,0.9)}
+nav{position:fixed;top:14px;left:50%;right:auto;transform:translateX(-50%);width:min(calc(100% - 32px),1180px);z-index:500;padding:0 22px;height:66px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,8,14,0.72);backdrop-filter:blur(24px) saturate(1.35);border:1px solid var(--border);border-radius:999px;box-shadow:0 18px 70px rgba(0,0,0,.25);transition:background .4s,border-color .3s,box-shadow .3s}
+[data-theme="light"] nav{background:rgba(255,255,255,0.72)}
 .nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;letter-spacing:-0.5px;color:var(--wh);display:flex;align-items:center;gap:8px}
 .nav-logo .dot{width:8px;height:8px;border-radius:50%;background:var(--or);animation:pulse-dot 2s infinite}
 @keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(255,92,26,.5)}70%{box-shadow:0 0 0 8px transparent}}
 .nav-center{display:flex;gap:28px;position:absolute;left:50%;transform:translateX(-50%)}
-.nav-center a{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mu);letter-spacing:.08em;transition:color .2s;padding:4px 0;position:relative}
+.nav-center a{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mu);letter-spacing:.08em;transition:color .2s;padding:4px 0;position:relative}
 .nav-center a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--or);transition:width .2s}
 .nav-center a:hover{color:var(--wh)}
 .nav-center a:hover::after{width:100%}
 .nav-right{display:flex;align-items:center;gap:12px}
-.status-pill{display:flex;align-items:center;gap:8px;padding:6px 14px;border-radius:100px;border:1px solid rgba(46,204,113,.3);font-family:'JetBrains Mono',monospace;font-size:11px;color:#2ECC71;letter-spacing:.08em}
+.status-pill{display:flex;align-items:center;gap:8px;padding:6px 14px;border-radius:100px;border:1px solid rgba(46,204,113,.24);background:rgba(46,204,113,.055);font-family:'JetBrains Mono',monospace;font-size:11px;color:#2ECC71;letter-spacing:.08em}
 .status-dot{width:6px;height:6px;border-radius:50%;background:#2ECC71;animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
 /* THEME TOGGLE */
-.theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--border2);background:transparent;cursor:none;display:flex;align-items:center;justify-content:center;font-size:15px;transition:border-color .2s,background .2s}
+.theme-toggle{width:38px;height:38px;border-radius:50%;border:1px solid var(--border2);background:rgba(255,255,255,.035);cursor:none;display:flex;align-items:center;justify-content:center;font-size:15px;transition:border-color .2s,background .2s,transform .2s}
 .theme-toggle:hover{border-color:var(--or);background:rgba(255,92,26,.08)}
 
-.btn-hire{padding:9px 22px;border-radius:8px;background:var(--or);color:#000;font-size:13px;font-weight:500;font-family:'Syne',sans-serif;transition:background .2s;position:relative;overflow:hidden}
+.btn-hire{padding:10px 22px;border-radius:999px;background:linear-gradient(135deg,var(--or),var(--or2));color:#090807;font-size:13px;font-weight:700;font-family:'Syne',sans-serif;transition:background .2s,box-shadow .2s;position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(255,106,42,.18)}
 .btn-hire::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);transform:translateX(-100%) skew(-15deg);transition:transform .4s}
 .btn-hire:hover::before{transform:translateX(150%) skew(-15deg)}
 .btn-hire:hover{background:var(--or2)}
 
 /* ── HERO ── */
-#hero{position:relative;height:100vh;min-height:700px;display:flex;flex-direction:column;justify-content:center;padding:0 8vw;overflow:hidden}
+#hero{position:relative;height:100vh;min-height:760px;display:flex;flex-direction:column;justify-content:center;padding:92px 8vw 0;overflow:hidden}
+#hero::before{content:'';position:absolute;inset:10% 6% 8%;border:1px solid var(--border);border-radius:36px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012));box-shadow:inset 0 1px 0 rgba(255,255,255,.07),var(--shadow-soft);pointer-events:none}
+#hero::after{content:'';position:absolute;width:420px;height:420px;right:12%;top:22%;border-radius:50%;background:conic-gradient(from 160deg,rgba(255,106,42,.20),rgba(0,217,232,.10),transparent,rgba(255,106,42,.20));filter:blur(30px);opacity:.28;pointer-events:none;animation:ambientSpin 18s linear infinite}
 .hero-noise{position:absolute;inset:0;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:200px 200px}
-.hero-grid-bg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 60% 40%,black 20%,transparent 80%)}
-.hero-glow-or{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,92,26,.13),transparent 70%);top:-10%;right:5%;pointer-events:none}
-.hero-glow-cy{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(0,217,232,.08),transparent 70%);bottom:-5%;left:10%;pointer-events:none}
-.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--cy);margin-bottom:24px;opacity:0;animation:fadeUp .8s .2s forwards}
-.hero-name{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(60px,9.5vw,130px);line-height:.92;letter-spacing:-4px;color:var(--wh);margin-bottom:8px;opacity:0;animation:fadeUp .8s .35s forwards;will-change:transform}
-.hero-name .stroke{-webkit-text-stroke:2px var(--or);color:transparent}
-.hero-tagline{font-family:'Syne',sans-serif;font-size:clamp(16px,2vw,24px);color:var(--wh2);font-weight:400;letter-spacing:-.3px;margin-bottom:40px;opacity:0;animation:fadeUp .8s .5s forwards}
+.hero-grid-bg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 76% 76% at 58% 42%,black 18%,transparent 78%)}
+.hero-glow-or{position:absolute;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,rgba(255,106,42,.12),transparent 72%);top:-8%;right:3%;pointer-events:none}
+.hero-glow-cy{position:absolute;width:470px;height:470px;border-radius:50%;background:radial-gradient(circle,rgba(0,217,232,.075),transparent 72%);bottom:0;left:7%;pointer-events:none}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cy);margin-bottom:24px;opacity:0;animation:fadeUp .9s .2s forwards;position:relative;z-index:1}
+.hero-name{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(58px,8vw,112px);line-height:.92;letter-spacing:-4px;color:var(--wh);margin-bottom:18px;opacity:0;animation:fadeUp .9s .35s forwards;will-change:transform;position:relative;z-index:1;text-wrap:balance;max-width:900px}
+.hero-name .stroke{display:inline-block;color:var(--or);text-shadow:0 0 32px rgba(255,106,42,.16);white-space:nowrap}
+.hero-tagline{font-family:'Syne',sans-serif;font-size:clamp(17px,1.6vw,21px);color:var(--wh2);font-weight:400;letter-spacing:-.25px;margin-bottom:42px;opacity:0;animation:fadeUp .9s .5s forwards;max-width:680px;position:relative;z-index:1}
 .hero-tagline .accent{color:var(--or)}
-.hero-cta-row{display:flex;gap:16px;align-items:center;opacity:0;animation:fadeUp .8s .65s forwards}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:14px 30px;border-radius:10px;background:var(--or);color:#000;font-weight:600;font-family:'Syne',sans-serif;font-size:14px;position:relative;overflow:hidden;transition:transform .2s}
+.hero-cta-row{display:flex;gap:16px;align-items:center;opacity:0;animation:fadeUp .9s .65s forwards;position:relative;z-index:1}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;border-radius:999px;background:linear-gradient(135deg,var(--or),var(--or2));color:#080706;font-weight:700;font-family:'Syne',sans-serif;font-size:14px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;box-shadow:0 16px 42px rgba(255,106,42,.22)}
 .btn-primary:hover{transform:translateY(-2px)}
 .btn-primary .arrow{transition:transform .2s}
 .btn-primary:hover .arrow{transform:translateX(4px)}
-.btn-outline{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:10px;border:1px solid var(--border2);color:var(--wh2);font-size:14px;font-family:'Syne',sans-serif;transition:border-color .2s,color .2s,transform .2s}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:999px;border:1px solid var(--border2);background:rgba(255,255,255,.025);color:var(--wh2);font-size:14px;font-family:'Syne',sans-serif;transition:border-color .2s,color .2s,transform .2s,background .2s}
 .btn-outline:hover{border-color:var(--cy);color:var(--cy);transform:translateY(-2px)}
-.hero-stats{position:absolute;right:8vw;bottom:80px;display:flex;flex-direction:column;gap:24px;opacity:0;animation:fadeUp .8s .8s forwards}
-.hero-stat{text-align:right}
+.hero-stats{position:absolute;right:8vw;bottom:82px;display:flex;flex-direction:column;gap:10px;opacity:0;animation:fadeUp .9s .8s forwards;z-index:1;max-width:210px}
+.hero-stat{text-align:right;padding:14px 18px;border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,.035);backdrop-filter:blur(18px);box-shadow:0 12px 38px rgba(0,0,0,.18)}
 .hero-stat .num{font-family:'Syne',sans-serif;font-weight:800;font-size:42px;letter-spacing:-2px;color:var(--wh);line-height:1}
 .hero-stat .num .suf{color:var(--or);font-size:32px}
 .hero-stat .label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase}
@@ -98,9 +109,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 .hero-scroll-line{width:48px;height:1px;background:linear-gradient(90deg,var(--or),transparent);animation:scrollline 2s infinite}
 @keyframes scrollline{0%{width:0;opacity:0}50%{opacity:1}100%{width:48px;opacity:0}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ambientSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
 /* ── MARQUEE ── */
-.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;overflow:hidden;background:var(--bg1);position:relative}
+.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;overflow:hidden;background:rgba(255,255,255,.025);backdrop-filter:blur(18px);position:relative}
 .marquee-wrap::before,.marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2}
 .marquee-wrap::before{left:0;background:linear-gradient(90deg,var(--bg1),transparent)}
 .marquee-wrap::after{right:0;background:linear-gradient(-90deg,var(--bg1),transparent)}
@@ -113,18 +125,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── SECTION BASE ── */
-.section{padding:110px 8vw;max-width:1280px;margin:0 auto}
+.section{padding:118px 8vw;max-width:1280px;margin:0 auto}
 .sec-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--or);margin-bottom:14px;display:flex;align-items:center;gap:12px}
 .sec-label::after{content:'';flex:1;max-width:60px;height:1px;background:var(--or);opacity:.4}
-.sec-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(34px,4.5vw,58px);letter-spacing:-2px;line-height:1.02;margin-bottom:56px}
+.sec-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(36px,4.5vw,60px);letter-spacing:-2.4px;line-height:1.02;margin-bottom:56px;text-wrap:balance}
 .sec-title .dim{color:var(--mu);font-weight:400}
 
 /* ── ABOUT ── */
 .about-bento{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:auto auto;gap:14px}
-.a-card{background:var(--bg1);border:1px solid var(--border);border-radius:20px;padding:30px;position:relative;overflow:hidden;transform-style:preserve-3d;transition:border-color .3s,box-shadow .3s;will-change:transform}
+.a-card{background:var(--glass);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;position:relative;overflow:hidden;transform-style:preserve-3d;transition:border-color .3s,box-shadow .3s,background .3s;will-change:transform;box-shadow:inset 0 1px 0 rgba(255,255,255,.055)}
 .a-card::before{content:'';position:absolute;inset:0;border-radius:20px;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,92,26,.08),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
 .a-card:hover::before{opacity:1}
-.a-card:hover{border-color:var(--border2);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.a-card:hover{border-color:var(--border2);box-shadow:var(--shadow-soft)}
 .a-card.tall{grid-row:span 2}
 .card-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--mu);margin-bottom:16px}
 .card-h{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:10px;letter-spacing:-.3px}
@@ -139,8 +151,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 /* ── SKILLS CODE WINDOWS ── */
 .skills-intro{color:var(--wh2);font-size:17px;max-width:600px;margin-bottom:64px;line-height:1.8}
 .code-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.code-window{background:var(--bg1);border:1px solid var(--border);border-radius:16px;overflow:hidden;transform-style:preserve-3d;transition:border-color .3s,box-shadow .3s,transform .3s}
-.code-window:hover{border-color:var(--border2);box-shadow:0 24px 64px rgba(0,0,0,.5)}
+.code-window{background:var(--glass);border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden;transform-style:preserve-3d;transition:border-color .3s,box-shadow .3s,transform .3s;box-shadow:inset 0 1px 0 rgba(255,255,255,.055)}
+.code-window:hover{border-color:var(--border2);box-shadow:var(--shadow-soft)}
 .cw-topbar{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
 .cw-dots{display:flex;gap:6px}
 .cw-dot{width:11px;height:11px;border-radius:50%}
@@ -158,8 +170,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 
 /* ── SERVICES ── */
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.serv-card{background:var(--bg1);border:1px solid var(--border);border-radius:18px;padding:32px 28px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;transform-style:preserve-3d}
-.serv-card:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 30px 60px rgba(0,0,0,.4)}
+.serv-card{background:var(--glass);border:1px solid var(--border);border-radius:var(--radius-lg);padding:34px 30px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;transform-style:preserve-3d;box-shadow:inset 0 1px 0 rgba(255,255,255,.055)}
+.serv-card:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:var(--shadow-soft)}
 .serv-num{font-family:'Syne',sans-serif;font-weight:800;font-size:60px;line-height:1;color:rgba(255,255,255,.04);letter-spacing:-3px;position:absolute;top:16px;right:20px}
 .serv-icon{width:48px;height:48px;border-radius:12px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;font-size:22px}
 .serv-icon.or{background:rgba(255,92,26,.12);border:1px solid rgba(255,92,26,.2)}
@@ -172,9 +184,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 
 /* ── LIVE PROJECTS ── */
 .live-projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
-.browser-frame-wrap{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--border2);background:var(--bg1);transition:border-color .3s,box-shadow .3s,transform .3s;transform-style:preserve-3d}
-.browser-frame-wrap:hover{border-color:rgba(255,92,26,.35);box-shadow:0 32px 80px rgba(0,0,0,.6);transform:translateY(-4px)}
-.browser-chrome{background:#181820;padding:12px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);flex-shrink:0}
+.browser-frame-wrap{display:flex;flex-direction:column;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border2);background:var(--glass);transition:border-color .3s,box-shadow .3s,transform .3s;transform-style:preserve-3d;box-shadow:var(--shadow-soft)}
+.browser-frame-wrap:hover{border-color:rgba(255,106,42,.35);box-shadow:var(--shadow);transform:translateY(-4px)}
+.browser-chrome{background:rgba(255,255,255,.035);padding:12px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);flex-shrink:0;backdrop-filter:blur(16px)}
 .chrome-dots{display:flex;gap:6px}
 .chrome-dot{width:11px;height:11px;border-radius:50%}
 .chrome-dot.r{background:#FF5F57}.chrome-dot.y{background:#FFBD2E}.chrome-dot.g{background:#28C840}
@@ -195,8 +207,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 .iframe-loading{position:absolute;inset:0;background:linear-gradient(90deg,var(--bg2) 0%,var(--bg3) 50%,var(--bg2) 100%);background-size:200% 100%;animation:shimmer 1.5s infinite}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 .project-cards-col{display:flex;flex-direction:column;gap:16px}
-.github-card{background:var(--bg1);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative;overflow:hidden;transform-style:preserve-3d;transition:border-color .3s,box-shadow .3s,transform .3s}
-.github-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 24px 48px rgba(0,0,0,.4)}
+.github-card{background:var(--glass);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px;position:relative;overflow:hidden;transform-style:preserve-3d;transition:border-color .3s,box-shadow .3s,transform .3s;box-shadow:inset 0 1px 0 rgba(255,255,255,.055)}
+.github-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:var(--shadow-soft)}
 .github-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,92,26,.06),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
 .github-card:hover::before{opacity:1}
 .gh-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
@@ -213,8 +225,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 .gh-lang-dot.react{background:#61DAFB}.gh-lang-dot.html{background:#E34C26}.gh-lang-dot.lua{background:#9467BD}
 .gh-tags{display:flex;gap:6px;flex-wrap:wrap}
 .gh-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;padding:3px 10px;border-radius:100px;border:1px solid var(--border2);color:var(--mu)}
-.site-info-card{background:linear-gradient(135deg,rgba(255,92,26,.08),rgba(0,217,232,.05));border:1px solid rgba(255,92,26,.2);border-radius:16px;padding:24px;transform-style:preserve-3d;transition:border-color .3s,transform .3s,box-shadow .3s}
-.site-info-card:hover{border-color:rgba(255,92,26,.4);transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+.site-info-card{background:linear-gradient(135deg,rgba(255,106,42,.10),rgba(255,255,255,.035),rgba(0,217,232,.045));border:1px solid rgba(255,106,42,.22);border-radius:var(--radius-md);padding:26px;transform-style:preserve-3d;transition:border-color .3s,transform .3s,box-shadow .3s;box-shadow:inset 0 1px 0 rgba(255,255,255,.065)}
+.site-info-card:hover{border-color:rgba(255,106,42,.42);transform:translateY(-3px);box-shadow:var(--shadow-soft)}
 .sic-top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .sic-live{display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#2ECC71;letter-spacing:.1em}
 .sic-live-dot{width:7px;height:7px;border-radius:50%;background:#2ECC71;animation:blink 1.5s infinite}
@@ -235,8 +247,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 .showcase-track{display:flex;gap:18px;overflow-x:auto;padding:10px 0 30px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;cursor:grab;user-select:none}
 .showcase-track:active{cursor:grabbing}
 .showcase-track::-webkit-scrollbar{display:none}
-.sc-card{min-width:340px;height:260px;border-radius:20px;flex-shrink:0;scroll-snap-align:start;position:relative;overflow:hidden;border:1px solid var(--border);background:var(--bg1);transition:border-color .3s,box-shadow .3s;transform-style:preserve-3d}
-.sc-card:hover{border-color:var(--border2);box-shadow:0 24px 48px rgba(0,0,0,.5)}
+.sc-card{min-width:340px;height:260px;border-radius:var(--radius-lg);flex-shrink:0;scroll-snap-align:start;position:relative;overflow:hidden;border:1px solid var(--border);background:var(--glass);transition:border-color .3s,box-shadow .3s,transform .3s;transform-style:preserve-3d;box-shadow:inset 0 1px 0 rgba(255,255,255,.055)}
+.sc-card:hover{border-color:var(--border2);box-shadow:var(--shadow-soft)}
 .sc-card-inner{position:absolute;inset:0;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;z-index:2}
 .sc-bg{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .sc-type{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--mu);margin-bottom:8px}
@@ -289,16 +301,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 .int-tab:hover:not(.on){color:var(--wh);border-color:var(--border3)}
 .int-panel{display:none;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
 .int-panel.on{display:grid}
-.int-card{background:var(--bg1);border:1px solid var(--border);border-radius:14px;padding:20px;transform-style:preserve-3d;transition:border-color .25s,transform .2s,box-shadow .2s}
-.int-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.3)}
+.int-card{background:var(--glass);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;transform-style:preserve-3d;transition:border-color .25s,transform .2s,box-shadow .2s;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.int-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--shadow-soft)}
 .int-star{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;color:var(--or);text-transform:uppercase;margin-bottom:8px;display:block}
 .int-name{font-weight:500;font-size:14.5px;margin-bottom:4px}
 .int-note{color:var(--mu);font-size:12.5px;line-height:1.6}
 
 /* ── TALENTS ── */
 .tal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.tal-card{background:var(--bg1);border:1px solid var(--border);border-radius:18px;padding:26px;display:flex;gap:18px;align-items:flex-start;transition:border-color .25s,transform .2s,box-shadow .2s;transform-style:preserve-3d}
-.tal-card:hover{border-color:rgba(0,217,232,.25);transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+.tal-card{background:var(--glass);border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px;display:flex;gap:18px;align-items:flex-start;transition:border-color .25s,transform .2s,box-shadow .2s;transform-style:preserve-3d;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.tal-card:hover{border-color:rgba(0,217,232,.25);transform:translateY(-3px);box-shadow:var(--shadow-soft)}
 .tal-ico{width:44px;height:44px;flex-shrink:0;border-radius:12px;font-size:22px;background:rgba(0,217,232,.08);border:1px solid rgba(0,217,232,.18);display:flex;align-items:center;justify-content:center}
 .tal-name{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:5px}
 .tal-note{color:var(--wh2);font-size:13px;line-height:1.6}
@@ -309,8 +321,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 #f1-section{
   position:relative;
   overflow:hidden;
-  background:var(--bg);
+  background:linear-gradient(180deg,transparent,rgba(232,0,45,.025),transparent);
   padding:110px 0;
+  display:none;
 }
 .f1-bg-lines{
   position:absolute;inset:0;pointer-events:none;overflow:hidden;
@@ -344,8 +357,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 
 /* TRACK SVG */
 .f1-track-wrap{
-  background:var(--bg1);border:1px solid var(--border);border-radius:24px;
-  padding:32px;margin-bottom:32px;position:relative;overflow:hidden;
+  background:var(--glass);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:32px;margin-bottom:32px;position:relative;overflow:hidden;box-shadow:var(--shadow-soft);
 }
 .f1-track-label{
   font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
@@ -380,9 +393,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 /* DRIVER CARDS */
 .f1-drivers-grid{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:32px}
 .driver-card{
-  background:var(--bg1);border:1px solid var(--border);border-radius:20px;
+  background:var(--glass);border:1px solid var(--border);border-radius:var(--radius-lg);
   padding:30px;position:relative;overflow:hidden;
-  transform-style:preserve-3d;transition:border-color .3s,box-shadow .3s,transform .3s;
+  transform-style:preserve-3d;transition:border-color .3s,box-shadow .3s,transform .3s;box-shadow:inset 0 1px 0 rgba(255,255,255,.055);
 }
 .driver-card.max{
   border-top:3px solid var(--f1-red);
@@ -390,7 +403,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 .driver-card.kimi{
   border-top:3px solid var(--f1-blue);
 }
-.driver-card:hover{transform:translateY(-4px);box-shadow:0 28px 64px rgba(0,0,0,.5)}
+.driver-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft)}
 .driver-card.max:hover{border-color:rgba(232,0,45,.5)}
 .driver-card.kimi:hover{border-color:rgba(54,113,198,.5)}
 .driver-num-bg{
@@ -430,8 +443,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 
 /* F1 TELEMETRY STRIP */
 .f1-telemetry{
-  background:var(--bg1);border:1px solid var(--border);border-radius:16px;
-  padding:20px 28px;display:flex;gap:32px;align-items:center;flex-wrap:wrap;
+  background:var(--glass);border:1px solid var(--border);border-radius:var(--radius-md);
+  padding:20px 28px;display:flex;gap:32px;align-items:center;flex-wrap:wrap;box-shadow:inset 0 1px 0 rgba(255,255,255,.055);
 }
 .tele-item{display:flex;flex-direction:column;gap:4px}
 .tele-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--mu)}
@@ -451,7 +464,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 ═══════════════════════════════════════════ */
 #cooking-section{
   position:relative;overflow:hidden;
-  background:var(--bg);
+  background:linear-gradient(180deg,transparent,rgba(255,140,0,.025),transparent);
 }
 .cooking-fire-bg{
   position:absolute;bottom:0;left:0;right:0;height:300px;pointer-events:none;
@@ -479,9 +492,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 
 .cooking-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;align-items:start}
 .cook-main-card{
-  background:var(--bg1);border:1px solid var(--border);border-radius:20px;
+  background:var(--glass);border:1px solid var(--border);border-radius:var(--radius-lg);
   padding:36px;position:relative;overflow:hidden;
-  transform-style:preserve-3d;transition:border-color .3s,box-shadow .3s,transform .3s;
+  transform-style:preserve-3d;transition:border-color .3s,box-shadow .3s,transform .3s;box-shadow:inset 0 1px 0 rgba(255,255,255,.055);
 }
 .cook-main-card::after{
   content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
@@ -503,11 +516,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 }
 .cook-cards-col{display:flex;flex-direction:column;gap:12px}
 .cook-card{
-  background:var(--bg1);border:1px solid var(--border);border-radius:16px;
+  background:var(--glass);border:1px solid var(--border);border-radius:var(--radius-md);
   padding:22px;position:relative;overflow:hidden;
-  transition:border-color .25s,transform .2s;transform-style:preserve-3d;
+  transition:border-color .25s,transform .2s,box-shadow .2s;transform-style:preserve-3d;box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
 }
-.cook-card:hover{border-color:rgba(255,140,0,.25);transform:translateY(-2px)}
+.cook-card:hover{border-color:rgba(255,140,0,.25);transform:translateY(-2px);box-shadow:var(--shadow-soft)}
 .cook-card-icon{font-size:28px;margin-bottom:10px}
 .cook-card-h{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:6px}
 .cook-card-p{color:var(--wh2);font-size:13px;line-height:1.65}
@@ -519,15 +532,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;d
 .heat-3{background:linear-gradient(90deg,var(--fire2),#FFD600);width:62%}
 
 /* ── HIRE ── */
-.hire-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(255,92,26,.08),transparent 70%)}
+.hire-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:680px;height:680px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(255,106,42,.10),rgba(0,217,232,.04),transparent 70%)}
 .hire-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(40px,6vw,80px);letter-spacing:-3px;line-height:.95;margin-bottom:24px}
 .hire-title .stroke{-webkit-text-stroke:2px var(--or);color:transparent}
 .hire-sub{color:var(--wh2);font-size:17px;max-width:520px;margin:0 auto 48px;line-height:1.75}
 .hire-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn-big{padding:18px 42px;border-radius:12px;font-family:'Syne',sans-serif;font-size:16px;font-weight:700;letter-spacing:.02em;position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;transition:transform .2s}
-.btn-big.or{background:var(--or);color:#000}
+.btn-big{padding:18px 42px;border-radius:999px;font-family:'Syne',sans-serif;font-size:16px;font-weight:700;letter-spacing:.02em;position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;transition:transform .2s,box-shadow .2s}
+.btn-big.or{background:linear-gradient(135deg,var(--or),var(--or2));color:#080706;box-shadow:0 18px 48px rgba(255,106,42,.22)}
 .btn-big.or:hover{background:var(--or2);transform:translateY(-3px)}
-.btn-big.bd{border:1px solid var(--border2);color:var(--wh2)}
+.btn-big.bd{border:1px solid var(--border2);color:var(--wh2);background:rgba(255,255,255,.025)}
 .btn-big.bd:hover{border-color:var(--cy);color:var(--cy);transform:translateY(-3px)}
 .contact-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:48px}
 .clink{padding:10px 22px;border-radius:8px;border:1px solid var(--border2);color:var(--mu);font-family:'JetBrains Mono',monospace;font-size:12px;transition:all .2s;letter-spacing:.05em}
@@ -606,18 +619,43 @@ footer{border-top:1px solid var(--border);padding:28px 8vw;display:flex;justify-
 @media(max-width:1000px){
   .live-projects-grid,.f1-drivers-grid,.cooking-grid{grid-template-columns:1fr}
   .iframe-container{height:380px}
+  .hero-stats{position:relative;right:auto;bottom:auto;flex-direction:row;margin-top:44px;align-self:flex-start}
+  .hero-stat{text-align:left}
 }
 @media(max-width:900px){
-  nav{padding:0 20px}
+  nav{padding:0 16px;top:10px;width:min(calc(100% - 20px),1180px)}
   .nav-center{display:none}
   #hero,.section,.cooking-inner,.f1-section-inner{padding-left:6vw;padding-right:6vw}
   .about-bento,.code-grid,.services-grid,.tal-grid{grid-template-columns:1fr 1fr}
+  #hero{min-height:auto;height:auto;padding-top:150px;padding-bottom:80px}
+  #hero::before{inset:96px 4vw 38px;border-radius:28px}
+  .hero-name{letter-spacing:-3.2px}
 }
 @media(max-width:600px){
   .about-bento,.code-grid,.services-grid,.tal-grid{grid-template-columns:1fr}
   .sc-card{min-width:290px;height:240px}
-  .hero-stats{right:6vw;bottom:60px}
+  .hero-stats{width:100%;display:grid;grid-template-columns:1fr;gap:10px}
+  .hero-stat{padding:12px 14px}
+  .hero-stat .num{font-size:34px}
+  .hero-cta-row,.hire-ctas,.reaction-btns{align-items:stretch;flex-direction:column}
+  .btn-primary,.btn-outline,.btn-big{justify-content:center;width:100%}
+  .status-pill{display:none}
+  .nav-logo{font-size:16px}
+  .btn-hire{padding:9px 14px}
   .f1-drivers-grid{grid-template-columns:1fr}
+  .benchmark-row{flex-direction:column}
+  .browser-chrome{flex-wrap:wrap}
+  .chrome-url-bar{order:3;flex-basis:100%}
+}
+@media(pointer:coarse){
+  html{cursor:auto}
+  body *{cursor:auto!important}
+  #cursor-dot,#cursor-ring,#trail-canvas{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}
+  #trail-canvas,#cursor-dot,#cursor-ring{display:none}
+  .reveal{opacity:1;transform:none}
 }
 </style>
 </head>
@@ -638,10 +676,10 @@ footer{border-top:1px solid var(--border);padding:28px 8vw;display:flex;justify-
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#services">Services</a>
-    <a href="#live-projects">Live Work</a>
-    <a href="#f1-section">F1</a>
-    <a href="#cooking-section">Kitchen</a>
-    <a href="#hire">Hire Me</a>
+    <a href="#live-projects">Projects</a>
+    <a href="#showcase">Capabilities</a>
+    <a href="#interests">Process</a>
+    <a href="#hire">Contact</a>
   </div>
   <div class="nav-right">
     <div class="status-pill"><span class="status-dot"></span>Available</div>
@@ -656,30 +694,29 @@ footer{border-top:1px solid var(--border);padding:28px 8vw;display:flex;justify-
   <div class="hero-grid-bg" id="hero-grid"></div>
   <div class="hero-glow-or" id="hero-glow-or"></div>
   <div class="hero-glow-cy" id="hero-glow-cy"></div>
-  <p class="hero-eyebrow">// Devony Dexter &nbsp;·&nbsp; Developer &amp; Designer</p>
+  <p class="hero-eyebrow">// Devony Dexter &nbsp;·&nbsp; Student Developer</p>
   <h1 class="hero-name" id="hero-name">
-    I Code<br/><span class="stroke" id="scramble-target">Everything.</span>
+    Websites &amp; tools<br/><span class="stroke" id="scramble-target">built clearly.</span>
   </h1>
   <p class="hero-tagline">
-    Full-stack developer. <span class="accent">HTML · CSS · JS · Lua</span> specialist.<br/>
-    Need a website? A reliable Roblox Dev? You're at the right place.
+    I’m a student developer with <span class="accent">2 years of experience</span>, mostly building websites, small web tools, and Roblox/Lua systems. I like making things clear, fast, and easy to maintain.
   </p>
   <div class="hero-cta-row">
-    <a href="#hire" class="btn-primary magnetic">Hire Dev <span class="arrow">→</span></a>
-    <a href="#live-projects" class="btn-outline">See Live Work</a>
+    <a href="#hire" class="btn-primary magnetic">Start a Project <span class="arrow">→</span></a>
+    <a href="#live-projects" class="btn-outline">View Case Study</a>
   </div>
   <div class="hero-stats" id="hero-stats">
     <div class="hero-stat">
-      <div class="num"><span class="counter" data-target="50" data-suffix="+">0</span></div>
-      <div class="label">Projects Shipped</div>
+      <div class="num"><span class="counter" data-target="2000" data-suffix="+">0</span></div>
+      <div class="label">Monthly Visits</div>
     </div>
     <div class="hero-stat">
-      <div class="num"><span class="counter" data-target="4" data-suffix=" yrs">0</span></div>
+      <div class="num"><span class="counter" data-target="2" data-suffix=" yrs">0</span></div>
       <div class="label">Experience</div>
     </div>
     <div class="hero-stat">
-      <div class="num" style="font-size:32px;letter-spacing:-1px">Full<span class="suf">-Stack</span></div>
-      <div class="label">Capability</div>
+      <div class="num" style="font-size:32px;letter-spacing:-1px">jblx<span class="suf">.net</span></div>
+      <div class="label">Maintained Now</div>
     </div>
   </div>
   <div class="hero-scroll">
@@ -695,37 +732,36 @@ footer{border-top:1px solid var(--border);padding:28px 8vw;display:flex;justify-
 
 <!-- ABOUT -->
 <div class="section" id="about">
-  <div class="sec-label reveal">01 — About</div>
-  <h2 class="sec-title reveal">The person<br/>behind the <span class="dim">terminal.</span></h2>
+  <div class="sec-label reveal">01 — Profile</div>
+  <h2 class="sec-title reveal">Still a student.<br/><span class="dim">Already shipping.</span></h2>
   <div class="about-bento">
     <div class="a-card tall reveal reveal-d1" data-tilt>
       <div class="card-tag">Who I am</div>
       <div class="card-h">Devony Dexter — call me Dev.</div>
-      <div class="card-p">A developer who can code <strong>pretty much anything</strong>. I built this page so I don't have to explain myself to every new person I meet — if you're reading this, we're already on good terms.<br/><br/>Orange is my color IRL but <strong>cyan is my loyalty in Jailbreak</strong>. I operate at the intersection of clean code and good design — and yes, those can coexist.<br/><br/>Fair warning: I'm very easily ragebaited. Just be chill and kind and we'll have a great time. 🫶</div>
+      <div class="card-p">I’m a student developer who enjoys turning simple ideas into working products. I care about clean layouts, smooth interactions, and code that won’t become painful to update later.<br/><br/>Right now I have <strong>2 years of experience</strong>, <strong>2 shipped projects</strong>, and one active site I still maintain: <strong>jblx.net</strong>.<br/><br/>I’m not trying to sound like an agency. I’m a young developer who takes the work seriously and wants every project to feel useful.</div>
       <div class="card-big-num">Dev</div>
     </div>
-    <div class="a-card reveal reveal-d2" data-tilt onmouseenter="this.querySelector('.raw-easter-egg').style.opacity='1'" onmouseleave="this.querySelector('.raw-easter-egg').style.opacity='0'">
-      <span class="card-emoji">🏎️</span>
-      <div class="card-tag">Outside the code</div>
-      <div class="card-h">F1 Fan, Food Lover, Car Guy.</div>
-      <div class="card-p">RB &amp; VCARB loyalist. Masterchef is practically a professional development activity for me. I cook sometimes — and I'm actually good at it.</div>
-      <div class="raw-easter-egg" style="opacity:0;transition:opacity .3s;position:absolute;bottom:12px;right:12px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--fire2);letter-spacing:.1em;">IT'S RAW</div>
+    <div class="a-card reveal reveal-d2" data-tilt>
+      <span class="card-emoji">🎓</span>
+      <div class="card-tag">Current stage</div>
+      <div class="card-h">Learning while building.</div>
+      <div class="card-p">School keeps my schedule real, so I try to be honest about scope, timelines, and what I can deliver well.</div>
     </div>
     <div class="a-card cy-accent reveal reveal-d3" data-tilt>
-      <span class="card-emoji">📺</span>
-      <div class="card-tag">Content &amp; Media</div>
-      <div class="card-h">YouTuber. Occasionally.</div>
-      <div class="card-p">I post on YouTube when the inspiration hits. Cat &amp; capybara content enthusiast. I enjoy <strong>fascinating sceneries</strong> and car content — the good stuff.</div>
+      <span class="card-emoji">🛠️</span>
+      <div class="card-tag">Core focus</div>
+      <div class="card-h">Websites, interfaces, and Lua scripts.</div>
+      <div class="card-p">Most of my work uses <strong>HTML, CSS, JavaScript, React, Node.js, and Lua</strong>. I’m strongest when the goal is clear and the project needs a careful builder.</div>
     </div>
     <div class="a-card reveal reveal-d1" data-tilt>
-      <div class="card-tag">Professionalism</div>
-      <div class="card-h">If I disappear — I'm busy.</div>
-      <div class="card-p">Or tired of chasing. If it's the latter, you're simply not worth the energy. <strong>No hard feelings</strong> — just energy conservation at its finest. 🫡</div>
+      <div class="card-tag">Working style</div>
+      <div class="card-h">Straightforward and practical.</div>
+      <div class="card-p">I’ll ask questions when something is unclear, share progress as I go, and avoid adding features just to make the project look bigger.</div>
     </div>
     <div class="a-card cy-accent reveal reveal-d2" data-tilt>
-      <div class="card-tag">Character</div>
-      <div class="card-h">TED Speaker. Pianist. Rubik's Cube Solver.</div>
-      <div class="card-p">Hidden depths. I rarely flex but when I do — it lands. Public speaking, piano, speedcubing. <strong>Yes, all three.</strong></div>
+      <div class="card-tag">Best fit</div>
+      <div class="card-h">Small, focused projects.</div>
+      <div class="card-p">I’m a good fit for landing pages, portfolio sites, community tools, study resources, and Roblox-related scripting work.</div>
     </div>
   </div>
 </div>
@@ -733,8 +769,8 @@ footer{border-top:1px solid var(--border);padding:28px 8vw;display:flex;justify-
 <!-- SKILLS -->
 <div class="section" id="skills">
   <div class="sec-label reveal">02 — Core Skills</div>
-  <h2 class="sec-title reveal">Four languages.<br/><span class="dim">Infinite output.</span></h2>
-  <p class="skills-intro reveal">My primary weapons are <strong style="color:var(--or)">HTML</strong>, <strong style="color:var(--cy)">CSS</strong>, <strong style="color:#FFD60A">JavaScript</strong>, and <strong style="color:#9467BD">Lua</strong>. Beyond that — I adapt fast. Whatever stack your project needs, I'll learn it and deliver.</p>
+  <h2 class="sec-title reveal">The tools I use<br/><span class="dim">most often.</span></h2>
+  <p class="skills-intro reveal">I mainly work with <strong style="color:var(--or)">HTML</strong>, <strong style="color:var(--cy)">CSS</strong>, <strong style="color:#FFD60A">JavaScript</strong>, <strong style="color:#61DAFB">React</strong>, <strong style="color:#8CC84B">Node.js</strong>, and <strong style="color:#9467BD">Lua</strong>. I’m still growing, but these are the tools I’m comfortable using to build real projects.</p>
   <div class="code-grid">
     <div class="code-window lang-html reveal reveal-d1" data-tilt>
       <div class="cw-topbar"><div class="cw-dots"><div class="cw-dot red"></div><div class="cw-dot yel"></div><div class="cw-dot grn"></div></div><div class="cw-lang-badge">HTML5</div><div class="cw-file">component.html</div></div>
@@ -746,9 +782,9 @@ footer{border-top:1px solid var(--border);padding:28px 8vw;display:flex;justify-
     <span class="t">&lt;/h2&gt;</span>
   <span class="t">&lt;/header&gt;</span>
   <span class="t">&lt;section</span> <span class="a">class</span>=<span class="s">"card__body"</span><span class="t">&gt;</span>
-    <span class="t">&lt;p&gt;</span><span class="p">Full-stack developer.</span><span class="t">&lt;/p&gt;</span>
+    <span class="t">&lt;p&gt;</span><span class="p">Student web developer.</span><span class="t">&lt;/p&gt;</span>
     <span class="t">&lt;a</span> <span class="a">href</span>=<span class="s">"#hire"</span> <span class="a">class</span>=<span class="s">"btn"</span><span class="t">&gt;</span>
-      <span class="p">Hire Me</span>
+      <span class="p">Contact Dev</span>
     <span class="t">&lt;/a&gt;</span>
   <span class="t">&lt;/section&gt;</span>
 <span class="t">&lt;/article&gt;</span></pre></div>
@@ -807,37 +843,37 @@ footer{border-top:1px solid var(--border);padding:28px 8vw;display:flex;justify-
 <!-- SERVICES -->
 <div class="section" id="services">
   <div class="sec-label reveal">03 — Services</div>
-  <h2 class="sec-title reveal">What I<br/><span class="dim">deliver.</span></h2>
+  <h2 class="sec-title reveal">What I can<br/><span class="dim">help with.</span></h2>
   <div class="services-grid">
     <div class="serv-card reveal reveal-d1" data-tilt>
       <div class="serv-num">01</div>
       <div class="serv-icon or">🌐</div>
-      <div class="serv-h">Web Development</div>
-      <div class="serv-p">Pixel-perfect interfaces. Performant backends. Full-stack execution from design system to deployment.</div>
-      <div class="serv-tags"><span class="serv-tag">HTML5</span><span class="serv-tag">CSS3</span><span class="serv-tag">JavaScript</span><span class="serv-tag">React</span><span class="serv-tag">Node.js</span></div>
+      <div class="serv-h">Websites & Landing Pages</div>
+      <div class="serv-p">Simple, polished pages for portfolios, communities, student projects, small businesses, or product ideas.</div>
+      <div class="serv-tags"><span class="serv-tag">HTML</span><span class="serv-tag">CSS</span><span class="serv-tag">JavaScript</span><span class="serv-tag">Responsive UI</span></div>
     </div>
     <div class="serv-card reveal reveal-d2" data-tilt>
       <div class="serv-num">02</div>
       <div class="serv-icon cy">🎮</div>
-      <div class="serv-h">Game Scripting</div>
-      <div class="serv-p">Roblox game systems, Lua scripting, game economy logic, and interactive experiences — built by someone who actually plays the games.</div>
-      <div class="serv-tags"><span class="serv-tag">Lua</span><span class="serv-tag">Roblox Studio</span><span class="serv-tag">Game Logic</span></div>
+      <div class="serv-h">Roblox / Lua Systems</div>
+      <div class="serv-p">Lua scripts for gameplay features, interface behavior, tools, and systems that need to be understandable after they’re built.</div>
+      <div class="serv-tags"><span class="serv-tag">Lua</span><span class="serv-tag">Roblox Studio</span><span class="serv-tag">Game Logic</span><span class="serv-tag">UI Systems</span></div>
     </div>
     <div class="serv-card reveal reveal-d3" data-tilt>
       <div class="serv-num">03</div>
       <div class="serv-icon pu">⚡</div>
-      <div class="serv-h">UI/UX Engineering</div>
-      <div class="serv-p">Motion design, 3D interactions, and polished micro-experiences. If you've seen this page — you already know the quality level.</div>
-      <div class="serv-tags"><span class="serv-tag">CSS Animations</span><span class="serv-tag">Interaction Design</span><span class="serv-tag">Performance</span></div>
+      <div class="serv-h">Frontend Improvements</div>
+      <div class="serv-p">Small redesigns, bug fixes, UI cleanup, dashboard-style pages, and improvements to existing frontend work.</div>
+      <div class="serv-tags"><span class="serv-tag">React</span><span class="serv-tag">Node.js</span><span class="serv-tag">UI Polish</span><span class="serv-tag">Maintenance</span></div>
     </div>
   </div>
 </div>
 
 <!-- LIVE PROJECTS -->
 <div class="section" id="live-projects">
-  <div class="sec-label reveal">04 — Live Projects</div>
-  <h2 class="sec-title reveal" style="margin-bottom:16px">Real work.<br/><span class="dim">Actually shipped.</span></h2>
-  <p class="reveal" style="color:var(--wh2);font-size:16px;margin-bottom:48px;max-width:560px">Not mock-ups. Not demos. These are live, running projects built and maintained by Dev.</p>
+  <div class="sec-label reveal">04 — Featured Work</div>
+  <h2 class="sec-title reveal" style="margin-bottom:16px">A project I still<br/><span class="dim">work on today.</span></h2>
+  <p class="reveal" style="color:var(--wh2);font-size:16px;margin-bottom:48px;max-width:620px">jblx.net is the project I’m most proud of so far. It’s a live site for the Roblox Jailbreak trading community, and I still maintain it.</p>
   <div class="live-projects-grid">
     <div class="reveal reveal-d1">
       <div class="browser-frame-wrap" data-tilt>
@@ -863,12 +899,12 @@ footer{border-top:1px solid var(--border);padding:28px 8vw;display:flex;justify-
         <div class="sic-top"><div class="sic-live"><span class="sic-live-dot"></span>Live &amp; Running</div></div>
         <div class="sic-title">jblx.net</div>
         <div class="sic-url">https://jblx.net</div>
-        <div class="sic-desc">A fully operational Jailbreak value list — built, designed, and maintained by Dev. Real-time trade values for the Roblox Jailbreak community.</div>
+        <div class="sic-desc">A Jailbreak value list for players who want a quick place to check trading information. I built the site, worked on the interface, and continue maintaining it.</div>
         <div class="sic-features">
-          <div class="sic-feat">Live value tracking &amp; market data</div>
-          <div class="sic-feat">Full responsive web design</div>
-          <div class="sic-feat">Custom-built frontend &amp; backend</div>
-          <div class="sic-feat">Actively maintained &amp; updated</div>
+          <div class="sic-feat">Public website with real community use</div>
+          <div class="sic-feat">Responsive layout for desktop and mobile</div>
+          <div class="sic-feat">Organized around quick value lookups</div>
+          <div class="sic-feat">Still maintained and updated</div>
         </div>
         <a href="https://jblx.net" target="_blank" rel="noopener" class="sic-link">Visit jblx.net ↗</a>
       </div>
@@ -878,18 +914,18 @@ footer{border-top:1px solid var(--border);padding:28px 8vw;display:flex;justify-
             <div class="gh-octo">⌥</div>
             <div>
               <div class="gh-repo-path">rieldevdex /</div>
-              <div class="gh-repo-name">seiacompetitionguidesmc2026</div>
+              <div class="gh-repo-name">SEIA Competition Guide</div>
             </div>
           </div>
           <a href="https://github.com/rieldevdex/seiacompetitionguidesmc2026" target="_blank" rel="noopener" class="gh-ext-btn">View on GitHub ↗</a>
         </div>
-        <div class="gh-desc">A React-based study guide app built for a competition team. Structured resource hub for SEIA MC 2026 prep — organized and fast.</div>
+        <div class="gh-desc">A React study guide/resource app for a competition team. This was more about organizing content clearly and making the information easy to use.</div>
         <div class="gh-meta">
           <div class="gh-badge"><span class="gh-lang-dot react"></span>React</div>
           <div class="gh-badge"><span class="gh-lang-dot html"></span>HTML/CSS</div>
           <div class="gh-badge" style="color:var(--mu)">📂 Public Repo</div>
         </div>
-        <div class="gh-tags"><span class="gh-tag">React</span><span class="gh-tag">Team Tool</span><span class="gh-tag">Study Guide</span><span class="gh-tag">SEIA 2026</span></div>
+        <div class="gh-tags"><span class="gh-tag">React</span><span class="gh-tag">Team Tool</span><span class="gh-tag">Study Guide</span><span class="gh-tag">Shipped Project</span></div>
       </div>
     </div>
   </div>
@@ -898,23 +934,23 @@ footer{border-top:1px solid var(--border);padding:28px 8vw;display:flex;justify-
 <!-- DEMO STRIP -->
 <div style="padding:20px 0 100px" id="showcase">
   <div style="padding:0 8vw;max-width:1280px;margin:0 auto">
-    <div class="sec-label reveal">05 — Capabilities Demo</div>
-    <h2 class="sec-title reveal" style="margin-bottom:16px">What I build.<br/><span class="dim">Drag to explore →</span></h2>
-    <p class="reveal" style="color:var(--mu);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;margin-bottom:28px;text-transform:uppercase">← Drag or scroll →</p>
+    <div class="sec-label reveal">05 — Capabilities</div>
+    <h2 class="sec-title reveal" style="margin-bottom:16px">Things I’m comfortable<br/><span class="dim">building.</span></h2>
+    <p class="reveal" style="color:var(--mu);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;margin-bottom:28px;text-transform:uppercase">Good fits for my current skill level</p>
   </div>
   <div class="showcase-outer">
     <div class="showcase-track" id="showcase-track">
       <div class="sc-card" data-tilt>
         <div class="sc-bg sc-vis-1"><div class="demo-circles"><div class="dc dc1"></div><div class="dc dc2"></div><div class="dc dc3"></div><div class="dc-core"></div></div></div>
-        <div class="sc-card-inner"><div class="sc-type">Pure CSS · Animation</div><div class="sc-title">Orbital Systems</div><div class="sc-desc">100% CSS-only. No JS, no SVG — just keyframes.</div></div>
+        <div class="sc-card-inner"><div class="sc-type">Landing Pages · UI</div><div class="sc-title">Websites</div><div class="sc-desc">Clean pages for people who need a simple but polished online presence.</div></div>
       </div>
       <div class="sc-card" data-tilt>
         <div class="sc-bg sc-vis-3"><div class="demo-counter"><div class="demo-big" id="sc-counter">0</div><div class="demo-sub">REAL-TIME COUNTER</div></div></div>
-        <div class="sc-card-inner"><div class="sc-type">JavaScript · DOM</div><div class="sc-title">Live Counters &amp; Data</div><div class="sc-desc">Animated, real-time UI components in vanilla JS.</div></div>
+        <div class="sc-card-inner"><div class="sc-type">JavaScript · Data</div><div class="sc-title">Interactive Tools</div><div class="sc-desc">Search, filters, counters, simple calculators, and other helpful UI features.</div></div>
       </div>
       <div class="sc-card" data-tilt>
         <div class="sc-bg sc-vis-2"><div class="demo-stripes"><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div></div></div>
-        <div class="sc-card-inner"><div class="sc-type">CSS Grid · Flexbox</div><div class="sc-title">Layout Mastery</div><div class="sc-desc">Complex, responsive layouts without a single framework.</div></div>
+        <div class="sc-card-inner"><div class="sc-type">Responsive Design</div><div class="sc-title">Mobile-Friendly Layouts</div><div class="sc-desc">Layouts that still feel good on phones, tablets, and desktops.</div></div>
       </div>
       <div class="sc-card" data-tilt>
         <div class="sc-bg sc-vis-4">
@@ -923,11 +959,11 @@ footer{border-top:1px solid var(--border);padding:28px 8vw;display:flex;justify-
             <path d="M0 120 Q55 80 110 100 Q165 120 220 70" stroke="rgba(148,103,189,0.3)" stroke-width="1.5" fill="none"><animate attributeName="d" values="M0 120 Q55 80 110 100 Q165 120 220 70;M0 95 Q55 130 110 90 Q165 60 220 110;M0 120 Q55 80 110 100 Q165 120 220 70" dur="5s" repeatCount="indefinite"/></path>
           </svg>
         </div>
-        <div class="sc-card-inner"><div class="sc-type">Lua · Roblox Studio</div><div class="sc-title">Game Scripting</div><div class="sc-desc">Systems, economy, and gameplay logic for Roblox.</div></div>
+        <div class="sc-card-inner"><div class="sc-type">Lua · Roblox Studio</div><div class="sc-title">Roblox Scripts</div><div class="sc-desc">Gameplay logic, UI behavior, tools, and Lua scripts that are easy to follow.</div></div>
       </div>
       <div class="sc-card" data-tilt>
         <div class="sc-bg sc-vis-5"><div class="demo-grid-boxes"><div class="gb"></div><div class="gb"></div><div class="gb"></div><div class="gb"></div><div class="gb"></div><div class="gb"></div><div class="gb"></div><div class="gb"></div><div class="gb"></div><div class="gb"></div><div class="gb"></div><div class="gb"></div></div></div>
-        <div class="sc-card-inner"><div class="sc-type">Full-Stack · APIs</div><div class="sc-title">End-to-End Products</div><div class="sc-desc">From database schema to pixel-perfect UI.</div></div>
+        <div class="sc-card-inner"><div class="sc-type">React · Node.js</div><div class="sc-title">Small Web Apps</div><div class="sc-desc">Focused tools like study guides, resource hubs, and small dashboards.</div></div>
       </div>
     </div>
   </div>
@@ -935,57 +971,27 @@ footer{border-top:1px solid var(--border);padding:28px 8vw;display:flex;justify-
 
 <!-- INTERESTS -->
 <div class="section" id="interests">
-  <div class="sec-label reveal">06 — Interests</div>
-  <h2 class="sec-title reveal">Read my soul.<br/><span class="dim">You asked for it :D</span></h2>
-  <div class="int-tabs reveal">
-    <button class="int-tab on" data-tab="books">📖 Books</button>
-    <button class="int-tab" data-tab="music">🎵 Music</button>
-    <button class="int-tab" data-tab="anime">✨ Anime</button>
-    <button class="int-tab" data-tab="shows">📺 Shows/Sport</button>
-    <button class="int-tab" data-tab="games">🎮 Games</button>
-  </div>
+  <div class="sec-label reveal">06 — Process</div>
+  <h2 class="sec-title reveal">How I like<br/><span class="dim">to work.</span></h2>
   <div id="tab-books" class="int-panel on">
-    <div class="int-card" data-tilt><span class="int-star">★ High Interest</span><div class="int-name">Predictably Irrational</div><div class="int-note">A must-read if you like psychology. Dan Ariely lives rent free in my brain.</div></div>
-    <div class="int-card" data-tilt><span class="int-star">★ High Interest</span><div class="int-name">Thinking Fast and Slow</div><div class="int-note">Kahneman is the GOAT. Just trust me on this one.</div></div>
-    <div class="int-card" data-tilt><div class="int-name">Sherlock Holmes</div><div class="int-note">Can't list them all — it's hella long :3 But they all slap.</div></div>
-  </div>
-  <div id="tab-music" class="int-panel">
-    <div class="int-card" data-tilt><span class="int-star">★ Currently Rotating</span><div class="int-name">Bryant Barnes</div><div class="int-note">Go-to. No further explanation needed.</div></div>
-    <div class="int-card" data-tilt><span class="int-star">★ Currently Rotating</span><div class="int-name">The Weeknd</div><div class="int-note">A classic. Always in the playlist.</div></div>
-    <div class="int-card" data-tilt><span class="int-star">★ Currently Rotating</span><div class="int-name">Creepy Nuts</div><div class="int-note">Japanese hip-hop that genuinely hits different.</div></div>
-    <div class="int-card" data-tilt><div class="int-name">JVKE</div><div class="int-note">Golden Hour is undefeated, end of discussion.</div></div>
-    <div class="int-card" data-tilt><div class="int-name">ZUTOMAYO</div><div class="int-note">Chaotic Jpop in the best possible way.</div></div>
-    <div class="int-card" data-tilt><div class="int-name">Don Toliver</div><div class="int-note">Space cowboy energy. Perfect late-night coding.</div></div>
-  </div>
-  <div id="tab-anime" class="int-panel">
-    <div class="int-card" data-tilt><div class="int-name">Spy × Family</div><div class="int-note">Anya carries the entire show and that's a fact.</div></div>
-    <div class="int-card" data-tilt><div class="int-name">Kimetsu No Yaiba</div><div class="int-note">Debatable ;-; but it's on the list, okay?</div></div>
-    <div class="int-card" data-tilt><div class="int-name">Chainsaw Man</div><div class="int-note">🧂 The ending arc was... a journey. That's all I'll say.</div></div>
-  </div>
-  <div id="tab-shows" class="int-panel">
-    <div class="int-card" data-tilt><div class="int-name">Masterchef</div><div class="int-note">No, seriously. Gordon Ramsay is iconic and I won't debate this.</div></div>
-    <div class="int-card" data-tilt><div class="int-name">Formula 1</div><div class="int-note">RB &amp; VCARB loyal. I will talk about it at length. Willingly.</div></div>
-    <div class="int-card" data-tilt><div class="int-name">The Tonight Show — Jimmy Fallon</div><div class="int-note">Midnight comfort content. A classic.</div></div>
-  </div>
-  <div id="tab-games" class="int-panel">
-    <div class="int-card" data-tilt><span class="int-star">★ Currently Playing</span><div class="int-name">Omori</div><div class="int-note">This game will make you feel things. Handle with care.</div></div>
-    <div class="int-card" data-tilt><span class="int-star">★ Currently Playing</span><div class="int-name">Roblox — Jailbreak</div><div class="int-note">Trading enthusiast. Cyan loyalist. Stocks &amp; JB specialist.</div></div>
-    <div class="int-card" data-tilt><div class="int-name">Minecraft</div><div class="int-note">Knows everything. Terrible speedrunner. Balance achieved.</div></div>
-    <div class="int-card" data-tilt><div class="int-name">Friday Night Funkin</div><div class="int-note">Rhythm game enjoyer. The mod scene is incredible.</div></div>
+    <div class="int-card" data-tilt><span class="int-star">01</span><div class="int-name">Start with the goal</div><div class="int-note">Before coding, I want to understand what the project should do and who will use it.</div></div>
+    <div class="int-card" data-tilt><span class="int-star">02</span><div class="int-name">Keep the scope realistic</div><div class="int-note">I’d rather build a smaller thing properly than promise a giant feature list I can’t finish well.</div></div>
+    <div class="int-card" data-tilt><span class="int-star">03</span><div class="int-name">Share progress</div><div class="int-note">I’ll show what’s working, ask for feedback, and adjust before the project goes too far in the wrong direction.</div></div>
+    <div class="int-card" data-tilt><span class="int-star">04</span><div class="int-name">Clean up before handoff</div><div class="int-note">I try to leave projects organized enough that updates and fixes are not a nightmare later.</div></div>
   </div>
 </div>
 
 <!-- HIDDEN TALENTS -->
 <div class="section" id="talents">
-  <div class="sec-label reveal">07 — Hidden Talents</div>
-  <h2 class="sec-title reveal">Rarely flexed.<br/><span class="dim">But they exist.</span></h2>
+  <div class="sec-label reveal">07 — Why Work With Me</div>
+  <h2 class="sec-title reveal">Why I might be<br/><span class="dim">a good fit.</span></h2>
   <div class="tal-grid">
-    <div class="tal-card reveal reveal-d1" data-tilt><div class="tal-ico">💻</div><div><div class="tal-name">Web Development</div><div class="tal-note">Full-stack. Front-end finesse. Back-end logic. Send the brief.</div></div></div>
-    <div class="tal-card reveal reveal-d2" data-tilt><div class="tal-ico">🎹</div><div><div class="tal-name">Piano</div><div class="tal-note">Yes I play. I don't flex this often but I really should.</div></div></div>
-    <div class="tal-card reveal reveal-d3" data-tilt><div class="tal-ico">🧩</div><div><div class="tal-name">Rubik's Cube</div><div class="tal-note">Can solve it. Won't race unless you want to lose.</div></div></div>
-    <div class="tal-card reveal reveal-d1" data-tilt><div class="tal-ico">📐</div><div><div class="tal-name">Physics, Econ &amp; Math</div><div class="tal-note">Enjoy them AND good at them. Yes, all three. Package deal.</div></div></div>
-    <div class="tal-card reveal reveal-d2" data-tilt><div class="tal-ico">🎤</div><div><div class="tal-name">Public Speaker</div><div class="tal-note">MC at conferences. TED speaker. Stage presence — I have it.</div></div></div>
-    <div class="tal-card reveal reveal-d3" data-tilt><div class="tal-ico">🍳</div><div><div class="tal-name">Cooking</div><div class="tal-note">I said "sometimes" but I'm actually good. Masterchef prepared me.</div></div></div>
+    <div class="tal-card reveal reveal-d1" data-tilt><div class="tal-ico">💻</div><div><div class="tal-name">I’ve shipped real work</div><div class="tal-note">jblx.net is live, used, and still maintained, so I know what it feels like to support something after launch.</div></div></div>
+    <div class="tal-card reveal reveal-d2" data-tilt><div class="tal-ico">📱</div><div><div class="tal-name">I care about the basics</div><div class="tal-note">Responsive layout, readable text, clear buttons, and simple navigation matter more than random effects.</div></div></div>
+    <div class="tal-card reveal reveal-d3" data-tilt><div class="tal-ico">🧩</div><div><div class="tal-name">I ask questions</div><div class="tal-note">If a request is vague, I’ll clarify it instead of guessing and building the wrong thing.</div></div></div>
+    <div class="tal-card reveal reveal-d1" data-tilt><div class="tal-ico">🔧</div><div><div class="tal-name">I think about updates</div><div class="tal-note">I try to write and structure things so future changes are easier to make.</div></div></div>
+    <div class="tal-card reveal reveal-d2" data-tilt><div class="tal-ico">💬</div><div><div class="tal-name">I’m easy to work with</div><div class="tal-note">You’ll know what I’m working on, what I need from you, and what the next step is.</div></div></div>
+    <div class="tal-card reveal reveal-d3" data-tilt><div class="tal-ico">⚡</div><div><div class="tal-name">I’m best with focused builds</div><div class="tal-note">Give me a clear problem, a reasonable scope, and I can build something useful.</div></div></div>
   </div>
 </div>
 
@@ -1109,12 +1115,12 @@ footer{border-top:1px solid var(--border);padding:28px 8vw;display:flex;justify-
   <div style="border-top:1px solid var(--border)"></div>
   <div style="max-width:1280px;margin:0 auto;padding:120px 8vw;text-align:center;position:relative;overflow:hidden">
     <div class="hire-glow"></div>
-    <div class="sec-label reveal" style="justify-content:center">10 — Let's Work</div>
-    <h2 class="hire-title reveal">Ready to hire<br/><span class="stroke">Dev?</span></h2>
-    <p class="hire-sub reveal">Open to freelance projects, collabs, and interesting full-time opportunities. Be chill, be kind, and let's build something worth talking about. 🍊</p>
+    <div class="sec-label reveal" style="justify-content:center">08 — Contact</div>
+    <h2 class="hire-title reveal">Have a project<br/><span class="stroke">in mind?</span></h2>
+    <p class="hire-sub reveal">If you have a focused project, send me the idea, timeline, and what you need built. I’ll let you know if it fits my current skill level and schedule.</p>
     <div class="hire-ctas reveal">
-      <a href="mailto:devonydexter@gmail.com" class="btn-big or magnetic">✉ Email Dev</a>
-      <a href="#live-projects" class="btn-big bd">View Live Work</a>
+      <a href="mailto:devonydexter@gmail.com?subject=Project%20Inquiry%20for%20Devony%20Dexter" class="btn-big or magnetic">✉ Start a Project</a>
+      <a href="#live-projects" class="btn-big bd">Review Projects</a>
     </div>
     <div class="contact-links reveal">
       <a href="https://github.com/rieldevdex" target="_blank" rel="noopener" class="clink">⌥ GitHub</a>
@@ -1137,20 +1143,31 @@ footer{border-top:1px solid var(--border);padding:28px 8vw;display:flex;justify-
 (function(){
   const canvas = document.getElementById('trail-canvas');
   const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
+  if (reduceMotion || coarsePointer) return;
   let W = canvas.width = window.innerWidth;
   let H = canvas.height = window.innerHeight;
   window.addEventListener('resize', () => { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; });
 
   const particles = [];
-  let mx = 0, my = 0;
+  let mx = 0, my = 0, lastSpawn = 0;
 
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; spawnEmbers(mx, my); });
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    const now = performance.now();
+    if (now - lastSpawn > 28) {
+      spawnEmbers(mx, my);
+      lastSpawn = now;
+    }
+  });
 
   function spawnEmbers(x, y) {
-    const count = 3;
+    const count = 2;
+    if (particles.length > 120) particles.splice(0, particles.length - 120);
     for (let i = 0; i < count; i++) {
       const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 2 + 0.5;
+      const speed = Math.random() * 1.35 + 0.35;
       const colors = ['#FF5C1A','#FF8450','#FFD60A','#FF3D00','#00D9E8'];
       const isF1 = Math.random() < 0.15;
       particles.push({
@@ -1158,8 +1175,8 @@ footer{border-top:1px solid var(--border);padding:28px 8vw;display:flex;justify-
         vx: Math.cos(angle) * speed * (Math.random() < 0.5 ? 1 : -1),
         vy: Math.sin(angle) * speed - Math.random() * 2,
         life: 1,
-        decay: Math.random() * 0.04 + 0.02,
-        size: Math.random() * 4 + 1,
+        decay: Math.random() * 0.035 + 0.025,
+        size: Math.random() * 2.6 + 0.8,
         color: isF1 ? '#E8002D' : colors[Math.floor(Math.random() * colors.length)],
         gravity: 0.08,
       });
@@ -1193,15 +1210,18 @@ footer{border-top:1px solid var(--border);padding:28px 8vw;display:flex;justify-
 ───────────────────────────── */
 const dot = document.getElementById('cursor-dot');
 const ring = document.getElementById('cursor-ring');
-let mx2 = 0, my2 = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx2 = e.clientX; my2 = e.clientY; dot.style.left = mx2+'px'; dot.style.top = my2+'px'; });
-(function lr(){ rx += (mx2-rx)*.12; ry += (my2-ry)*.12; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(lr); })();
-document.querySelectorAll('a,button,[data-tilt]').forEach(el => {
-  el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-  el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-});
-document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
-document.addEventListener('mouseup', () => document.body.classList.remove('cursor-click'));
+const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+if (hasFinePointer && dot && ring) {
+  let mx2 = 0, my2 = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx2 = e.clientX; my2 = e.clientY; dot.style.left = mx2+'px'; dot.style.top = my2+'px'; });
+  (function lr(){ rx += (mx2-rx)*.12; ry += (my2-ry)*.12; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(lr); })();
+  document.querySelectorAll('a,button,[data-tilt]').forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+  });
+  document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
+  document.addEventListener('mouseup', () => document.body.classList.remove('cursor-click'));
+}
 
 /* ─────────────────────────────
    PROGRESS BAR
@@ -1238,24 +1258,6 @@ window.addEventListener('scroll', () => {
 }, {passive:true});
 
 /* ─────────────────────────────
-   SCRAMBLE TEXT
-───────────────────────────── */
-const st = document.getElementById('scramble-target');
-const ft = st.textContent;
-const ch = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%';
-let it = 0, si;
-function scramble() {
-  it = 0; clearInterval(si);
-  si = setInterval(() => {
-    st.textContent = ft.split('').map((c, i) => i < it ? c : ch[Math.floor(Math.random() * ch.length)]).join('');
-    if (it >= ft.length) clearInterval(si);
-    it += .5;
-  }, 30);
-}
-setTimeout(scramble, 1200);
-st.parentElement.addEventListener('mouseenter', scramble);
-
-/* ─────────────────────────────
    COUNTERS
 ───────────────────────────── */
 function animC(el) {
@@ -1275,7 +1277,7 @@ setInterval(() => { if(sc) sc.textContent = (Math.floor(Math.random()*9000+1000)
 /* ─────────────────────────────
    MARQUEE
 ───────────────────────────── */
-const mitems = [{t:'HTML5',c:0},{t:'CSS3',c:1},{t:'JavaScript',c:0},{t:'Lua',c:0},{t:'React',c:1},{t:'Node.js',c:0},{t:'Roblox Studio',c:1},{t:'jblx.net',c:1},{t:'REST APIs',c:0},{t:'Git',c:1},{t:'Full-Stack',c:0},{t:'UI / UX',c:1},{t:'F1 Fan 🏎️',c:0},{t:'RB Loyalist',c:1},{t:'Masterchef Viewer',c:0}];
+const mitems = [{t:'HTML',c:0},{t:'CSS',c:1},{t:'JavaScript',c:0},{t:'React',c:1},{t:'Node.js',c:0},{t:'Lua',c:0},{t:'Roblox Studio',c:1},{t:'Responsive UI',c:1},{t:'Landing Pages',c:0},{t:'Small Web Apps',c:1},{t:'Frontend Polish',c:0},{t:'Git',c:1},{t:'jblx.net',c:0},{t:'2 Years Experience',c:1},{t:'2 Projects Shipped',c:0}];
 const mtrack = document.getElementById('marquee-track');
 [...mitems,...mitems,...mitems,...mitems].forEach(item => {
   const d = document.createElement('div');
@@ -1287,36 +1289,40 @@ const mtrack = document.getElementById('marquee-track');
 /* ─────────────────────────────
    3D TILT
 ───────────────────────────── */
-document.querySelectorAll('[data-tilt]').forEach(card => {
-  card.addEventListener('mouseenter', () => card.style.transition = 'none');
-  card.addEventListener('mouseleave', () => {
-    card.style.transition = 'transform .6s cubic-bezier(.23,1,.32,1),box-shadow .3s,border-color .3s';
-    card.style.transform = 'perspective(900px) rotateX(0) rotateY(0) translateZ(0)';
-    card.style.setProperty('--mx','50%');
-    card.style.setProperty('--my','50%');
+if (hasFinePointer && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('[data-tilt]').forEach(card => {
+    card.addEventListener('mouseenter', () => card.style.transition = 'none');
+    card.addEventListener('mouseleave', () => {
+      card.style.transition = 'transform .6s cubic-bezier(.23,1,.32,1),box-shadow .3s,border-color .3s';
+      card.style.transform = 'perspective(900px) rotateX(0) rotateY(0) translateZ(0)';
+      card.style.setProperty('--mx','50%');
+      card.style.setProperty('--my','50%');
+    });
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect(), x = (e.clientX-r.left)/r.width-.5, y = (e.clientY-r.top)/r.height-.5;
+      card.style.transform = `perspective(900px) rotateY(${x*7}deg) rotateX(${-y*7}deg) translateZ(5px)`;
+      card.style.setProperty('--mx', ((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+      card.style.setProperty('--my', ((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
+    });
   });
-  card.addEventListener('mousemove', e => {
-    const r = card.getBoundingClientRect(), x = (e.clientX-r.left)/r.width-.5, y = (e.clientY-r.top)/r.height-.5;
-    card.style.transform = `perspective(900px) rotateY(${x*14}deg) rotateX(${-y*14}deg) translateZ(8px)`;
-    card.style.setProperty('--mx', ((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
-    card.style.setProperty('--my', ((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
-  });
-});
+}
 
 /* ─────────────────────────────
    MAGNETIC BUTTONS
 ───────────────────────────── */
-document.querySelectorAll('.magnetic').forEach(btn => {
-  btn.addEventListener('mousemove', e => {
-    const r = btn.getBoundingClientRect(), x = (e.clientX-r.left-r.width/2)*.35, y = (e.clientY-r.top-r.height/2)*.35;
-    btn.style.transform = `translate(${x}px,${y}px)`;
-    btn.style.transition = 'transform .1s linear';
+if (hasFinePointer && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.magnetic').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect(), x = (e.clientX-r.left-r.width/2)*.22, y = (e.clientY-r.top-r.height/2)*.22;
+      btn.style.transform = `translate(${x}px,${y}px)`;
+      btn.style.transition = 'transform .1s linear';
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate(0,0)';
+      btn.style.transition = 'transform .5s cubic-bezier(.23,1,.32,1)';
+    });
   });
-  btn.addEventListener('mouseleave', () => {
-    btn.style.transform = 'translate(0,0)';
-    btn.style.transition = 'transform .5s cubic-bezier(.23,1,.32,1)';
-  });
-});
+}
 
 /* ─────────────────────────────
    TABS
