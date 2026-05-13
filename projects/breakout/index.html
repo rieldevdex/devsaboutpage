@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Breakout — Dev Arcade</title>
+<link rel="stylesheet" href="../_shared/arcade.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="arcade-app">
+    <div class="arcade-header">
+      <div class="arcade-title">Breakout<span class="dim">.</span></div>
+      <span class="arcade-kicker">Canvas · Physics</span>
+      <div class="arcade-actions" id="actions"></div>
+    </div>
+
+    <div class="arcade-flex">
+      <div class="arcade-stage" id="stage">
+        <canvas id="game" width="480" height="560"></canvas>
+
+        <div class="overlay" id="menu">
+          <div class="overlay-card">
+            <h1>Break<span class="accent">out</span>.</h1>
+            <div class="overlay-sub">Bounce. Aim. Clear every brick.</div>
+            <button class="btn btn-primary" id="startBtn">Start →</button>
+            <div class="overlay-hint">← / → or mouse · Space launch · P pause</div>
+          </div>
+        </div>
+
+        <div class="overlay hidden" id="pause">
+          <div class="overlay-card">
+            <h2>Paused</h2>
+            <button class="btn btn-primary" id="resumeBtn">Resume</button>
+            <button class="btn btn-ghost" id="quitBtn">Quit to menu</button>
+          </div>
+        </div>
+
+        <div class="overlay hidden" id="gameover">
+          <div class="overlay-card">
+            <h2 id="goTitle">Game Over</h2>
+            <span class="new-best hidden" id="newBest">New Best</span>
+            <div class="overlay-stats">
+              <div><span class="lbl">Score</span><span class="val" id="goScore">0</span></div>
+              <div><span class="lbl">Level</span><span class="val" id="goLevel">1</span></div>
+              <div><span class="lbl">Best</span><span class="val" id="goBest">0</span></div>
+            </div>
+            <button class="btn btn-primary" id="retryBtn">Play again</button>
+            <button class="btn btn-ghost" id="menuBtn">Main menu</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="arcade-panel">
+        <div class="stat-box"><div class="stat-label">Score</div><div class="stat-value or" id="score">0</div></div>
+        <div class="stat-box"><div class="stat-label">Level</div><div class="stat-value" id="level">1</div></div>
+        <div class="stat-box"><div class="stat-label">Lives</div><div class="stat-value cy" id="lives">3</div></div>
+        <div class="stat-box"><div class="stat-label">Best</div><div class="stat-value" id="best">0</div></div>
+        <div class="controls-list">
+          <div class="controls-list-title">Controls</div>
+          <div><span class="kbd">←</span><span class="kbd">→</span> move paddle</div>
+          <div>or move <span class="kbd">mouse</span></div>
+          <div><span class="kbd">Space</span> launch ball</div>
+          <div><span class="kbd">P</span> pause</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="../_shared/arcade.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

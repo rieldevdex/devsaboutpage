@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Flappy Chick — Dev Arcade</title>
+<link rel="stylesheet" href="../_shared/arcade.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="arcade-app">
+    <div class="arcade-header">
+      <div class="arcade-title">Flappy<span class="accent"> Chick</span><span class="dim">.</span></div>
+      <span class="arcade-kicker">Canvas · 6 modes</span>
+      <div class="arcade-actions" id="actions">
+        <button class="btn-icon" id="soundBtn" title="Toggle sound">🔊</button>
+      </div>
+    </div>
+
+    <div class="arcade-flex">
+      <div class="arcade-stage" id="stage">
+        <canvas id="game" width="400" height="600"></canvas>
+
+        <div id="hud" class="hidden">
+          <div class="fb-score-display"><span id="score">0</span></div>
+          <div class="fb-side-badges">
+            <div class="pill" id="levelBadge">Lv 1</div>
+            <div class="pill cy" id="modeBadge">Normal</div>
+            <div class="pill" id="bestBadge">Best 0</div>
+          </div>
+          <div id="powerupBar"></div>
+        </div>
+
+        <div id="menu" class="overlay">
+          <div class="overlay-card">
+            <h1>Flappy <span class="accent">Chick</span></h1>
+            <div class="overlay-sub">Pick a mode and start flapping.</div>
+            <div class="mode-grid">
+              <button class="mode-btn" data-mode="easy"><div class="m-title">Easy</div><div class="m-desc">Slow & wide</div></button>
+              <button class="mode-btn selected" data-mode="normal"><div class="m-title">Normal</div><div class="m-desc">Classic flappy</div></button>
+              <button class="mode-btn" data-mode="hard"><div class="m-title">Hard</div><div class="m-desc">Faster + tighter</div></button>
+              <button class="mode-btn" data-mode="insane"><div class="m-title">Insane</div><div class="m-desc">Moving pipes</div></button>
+              <button class="mode-btn" data-mode="reverse"><div class="m-title">Reverse</div><div class="m-desc">Flap to drop</div></button>
+              <button class="mode-btn" data-mode="zen"><div class="m-title">Zen</div><div class="m-desc">No collision</div></button>
+            </div>
+            <button id="startBtn" class="btn btn-primary">Start →</button>
+            <div class="overlay-hint">Space / click / tap to flap · P to pause</div>
+          </div>
+        </div>
+
+        <div id="pause" class="overlay hidden">
+          <div class="overlay-card">
+            <h2>Paused</h2>
+            <button id="resumeBtn" class="btn btn-primary">Resume</button>
+            <button id="menuFromPauseBtn" class="btn btn-ghost">Quit</button>
+          </div>
+        </div>
+
+        <div id="gameover" class="overlay hidden">
+          <div class="overlay-card">
+            <h2 id="goTitle">Game Over</h2>
+            <span class="new-best hidden" id="newBest">New Best</span>
+            <div class="overlay-stats">
+              <div><span class="lbl">Score</span><span class="val" id="goScore">0</span></div>
+              <div><span class="lbl">Level</span><span class="val" id="goLevel">1</span></div>
+              <div><span class="lbl">Best</span><span class="val" id="goBest">0</span></div>
+            </div>
+            <button id="retryBtn" class="btn btn-primary">Play again</button>
+            <button id="menuBtn" class="btn btn-ghost">Main menu</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="arcade-panel">
+        <div class="controls-list">
+          <div class="controls-list-title">Controls</div>
+          <div><span class="kbd">Space</span> flap</div>
+          <div><span class="kbd">click</span> flap</div>
+          <div><span class="kbd">P</span> pause</div>
+        </div>
+        <div class="controls-list">
+          <div class="controls-list-title">Power-ups</div>
+          <div>🛡 Shield</div>
+          <div>⏱ Slow-mo</div>
+          <div>🧲 Magnet</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="../_shared/arcade.js"></script>
+  <script>Arcade.attachBackLink();</script>
+  <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Memory Match — Dev Arcade</title>
+<link rel="stylesheet" href="../_shared/arcade.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="arcade-app">
+    <div class="arcade-header">
+      <div class="arcade-title">Memory<span class="dim"> Match.</span></div>
+      <span class="arcade-kicker">CSS Flip · Reflex</span>
+      <div class="arcade-actions" id="actions">
+        <button class="btn btn-ghost" id="newGameBtn">New Game</button>
+      </div>
+    </div>
+
+    <div class="arcade-flex">
+      <div class="arcade-stage" id="stage">
+        <div class="mm-board" id="board"></div>
+
+        <div class="overlay" id="menu">
+          <div class="overlay-card">
+            <h2>Memory Match</h2>
+            <div class="overlay-sub">Find every pair. Fewer flips = better score.</div>
+            <div class="mode-grid" id="diffGrid">
+              <button class="mode-btn selected" data-d="easy"><div class="m-title">Easy</div><div class="m-desc">4×3 · 6 pairs</div></button>
+              <button class="mode-btn" data-d="medium"><div class="m-title">Medium</div><div class="m-desc">4×4 · 8 pairs</div></button>
+              <button class="mode-btn" data-d="hard"><div class="m-title">Hard</div><div class="m-desc">6×4 · 12 pairs</div></button>
+            </div>
+            <button class="btn btn-primary" id="startBtn">Start →</button>
+            <div class="overlay-hint">Click two cards to reveal. Match to clear.</div>
+          </div>
+        </div>
+
+        <div class="overlay hidden" id="result">
+          <div class="overlay-card">
+            <h2>You did it!</h2>
+            <span class="new-best hidden" id="newBest">New Best</span>
+            <div class="overlay-stats">
+              <div><span class="lbl">Time</span><span class="val" id="rTime">0:00</span></div>
+              <div><span class="lbl">Flips</span><span class="val" id="rFlips">0</span></div>
+              <div><span class="lbl">Best</span><span class="val" id="rBest">—</span></div>
+            </div>
+            <button class="btn btn-primary" id="playAgainBtn">Play again</button>
+            <button class="btn btn-ghost" id="changeDiffBtn">Change difficulty</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="arcade-panel">
+        <div class="stat-box"><div class="stat-label">Time</div><div class="stat-value cy" id="time">0:00</div></div>
+        <div class="stat-box"><div class="stat-label">Flips</div><div class="stat-value or" id="flips">0</div></div>
+        <div class="stat-box"><div class="stat-label">Pairs</div><div class="stat-value" id="pairs">0/0</div></div>
+        <div class="stat-box"><div class="stat-label">Best Flips</div><div class="stat-value" id="best" style="font-size:18px">—</div></div>
+        <div class="controls-list">
+          <div class="controls-list-title">How to play</div>
+          <div>Click any card to flip</div>
+          <div>Match 2 same icons</div>
+          <div>Clear all pairs to win</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="../_shared/arcade.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

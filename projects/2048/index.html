@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>2048 — Dev Arcade</title>
+<link rel="stylesheet" href="../_shared/arcade.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="arcade-app">
+    <div class="arcade-header">
+      <div class="arcade-title">2048<span class="dim">.</span></div>
+      <span class="arcade-kicker">CSS · DOM</span>
+      <div class="arcade-actions" id="actions">
+        <button class="btn btn-ghost" id="newGame">New Game</button>
+      </div>
+    </div>
+
+    <div class="arcade-flex">
+      <div class="arcade-stage" id="stage">
+        <div class="board" id="board">
+          <div class="bg-grid" id="bgGrid"></div>
+          <div class="tiles"  id="tiles"></div>
+        </div>
+
+        <div class="overlay hidden" id="overlay">
+          <div class="overlay-card">
+            <h2 id="ovTitle">You won!</h2>
+            <span class="new-best hidden" id="newBest">New Best</span>
+            <div class="overlay-stats">
+              <div><span class="lbl">Score</span><span class="val" id="ovScore">0</span></div>
+              <div><span class="lbl">Best</span><span class="val" id="ovBest">0</span></div>
+              <div><span class="lbl">Moves</span><span class="val" id="ovMoves">0</span></div>
+            </div>
+            <button class="btn btn-primary" id="continueBtn">Keep playing</button>
+            <button class="btn btn-ghost" id="restartBtn">New game</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="arcade-panel">
+        <div class="stat-box"><div class="stat-label">Score</div><div class="stat-value or" id="score">0</div></div>
+        <div class="stat-box"><div class="stat-label">Best</div><div class="stat-value cy" id="best">0</div></div>
+        <div class="stat-box"><div class="stat-label">Moves</div><div class="stat-value" id="moves">0</div></div>
+        <div class="controls-list">
+          <div class="controls-list-title">Controls</div>
+          <div><span class="kbd">↑</span><span class="kbd">↓</span><span class="kbd">←</span><span class="kbd">→</span> slide</div>
+          <div><span class="kbd">W</span><span class="kbd">A</span><span class="kbd">S</span><span class="kbd">D</span> slide</div>
+          <div>swipe on touch</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="../_shared/arcade.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

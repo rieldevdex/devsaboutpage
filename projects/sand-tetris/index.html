@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sand Tetris — Dev Arcade</title>
+<link rel="stylesheet" href="../_shared/arcade.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="arcade-app">
+    <div class="arcade-header">
+      <div class="arcade-title">Sand<span class="accent"> Tetris</span><span class="dim">.</span></div>
+      <span class="arcade-kicker">Canvas · Particle Physics</span>
+      <div class="arcade-actions" id="actions"></div>
+    </div>
+
+    <div class="arcade-flex">
+      <div class="arcade-stage" id="stage">
+        <canvas id="board"></canvas>
+
+        <div id="overlay" class="overlay hidden">
+          <div class="overlay-card">
+            <h2 id="overlayText">Paused</h2>
+          </div>
+        </div>
+
+        <div id="gameOver" class="overlay hidden">
+          <div class="overlay-card">
+            <h2>Game Over</h2>
+            <span class="new-best hidden" id="newBest">New Best</span>
+            <div class="overlay-stats">
+              <div><span class="lbl">Score</span><span class="val" id="goScore">0</span></div>
+              <div><span class="lbl">Best</span><span class="val" id="goBest">0</span></div>
+              <div><span class="lbl">Clears</span><span class="val" id="goLines">0</span></div>
+              <div><span class="lbl">Level</span><span class="val" id="goLevel">1</span></div>
+            </div>
+            <button id="goRestart" class="btn btn-primary">Play again</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="arcade-panel">
+        <div class="stat-box">
+          <div class="stat-label">Next</div>
+          <canvas id="next" width="100" height="100" style="width:100%;display:block;background:rgba(0,0,0,0.2);border-radius:6px;image-rendering:pixelated"></canvas>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Score</div>
+          <div class="stat-value or" id="score">0</div>
+          <div id="combo" class="fb-combo hidden">x1</div>
+        </div>
+        <div class="stat-box"><div class="stat-label">Clears</div><div class="stat-value cy" id="lines">0</div></div>
+        <div class="stat-box"><div class="stat-label">Level</div><div class="stat-value" id="level">1</div></div>
+        <button id="restart" class="btn btn-ghost">New Game</button>
+        <div class="controls-list">
+          <div class="controls-list-title">Controls</div>
+          <div><span class="kbd">←</span><span class="kbd">→</span> move</div>
+          <div><span class="kbd">↑</span> rotate</div>
+          <div><span class="kbd">↓</span> soft drop</div>
+          <div><span class="kbd">Space</span> hard drop</div>
+          <div><span class="kbd">P</span> pause</div>
+        </div>
+        <div class="controls-list" style="font-size:11px">
+          Connect same-color sand from <b style="color:var(--or)">left edge</b> to <b style="color:var(--or)">right edge</b> to clear it.
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="../_shared/arcade.js"></script>
+  <script>Arcade.attachBackLink();</script>
+  <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+/* Tetris — game-specific (unified) */
+
+#board {
+  background: #0a0a14;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: block;
+}
+.arcade-stage { width: max-content; max-width: 100%; padding: 6px; background: transparent; border: none; box-shadow: none; }
+
+/* Hold canvas dim when used */
+#hold.used { opacity: 0.4; filter: grayscale(0.8); }
+
+/* Combo badge inside score box */
+.fb-combo {
+  margin-top: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  background: linear-gradient(90deg, var(--or), var(--cy));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transform-origin: left center;
+  transition: opacity 0.25s;
+}
+.fb-combo.hidden { opacity: 0; visibility: hidden; }
+.fb-combo.pulse { animation: comboPop 0.4s var(--ease); }
+@keyframes comboPop {
+  0%   { transform: scale(0.6); }
+  60%  { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* Brief flash on big clears */
+.wrap.flash {
+  animation: wrapFlash 0.5s var(--ease);
+}
+@keyframes wrapFlash {
+  0%   { box-shadow: inset 0 1px 0 rgba(255,255,255,.06), var(--shadow); }
+  40%  { box-shadow: 0 0 0 2px var(--or), 0 0 60px var(--or-glow), var(--shadow); }
+  100% { box-shadow: inset 0 1px 0 rgba(255,255,255,.06), var(--shadow); }
+}
+
+/* High scores list inside menu overlay */
+.hs-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mu);
+  margin-top: 4px;
+  align-self: flex-start;
+}
+.hs-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 140px;
+  overflow-y: auto;
+}
+.hs-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--wh2);
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgba(255,255,255,0.03);
+}
+.hs-list li b { color: var(--or); font-weight: 700; }
+.hs-list li.empty { justify-content: center; color: var(--mu); font-style: italic; }
+
+@media (max-width: 640px) {
+  .arcade-flex { gap: 12px; }
+  #board { width: 240px; height: 480px; }
+}

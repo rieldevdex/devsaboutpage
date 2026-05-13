@@ -1,0 +1,86 @@
+/* 2048 — game-specific styles */
+
+.board {
+  position: relative;
+  width: 440px;
+  height: 440px;
+  max-width: 100%;
+  padding: 10px;
+  background: var(--bg2);
+  border-radius: var(--radius-md);
+  --gap: 10px;
+  --cell: calc((100% - var(--gap) * 5) / 4);
+  touch-action: none;
+}
+
+.bg-grid {
+  position: absolute;
+  inset: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: var(--gap);
+}
+.bg-grid > div {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.tiles {
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
+}
+
+.tile {
+  position: absolute;
+  width: calc((100% - var(--gap) * 3) / 4);
+  height: calc((100% - var(--gap) * 3) / 4);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  letter-spacing: -1px;
+  color: var(--wh);
+  transition: left 0.14s var(--ease), top 0.14s var(--ease);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.tile.appear   { animation: tileAppear .18s var(--ease); }
+.tile.merged   { animation: tileMerge  .22s var(--ease); }
+
+@keyframes tileAppear { from { transform: scale(0); } to { transform: scale(1); } }
+@keyframes tileMerge  { 0% { transform: scale(1); } 50% { transform: scale(1.18); } 100% { transform: scale(1); } }
+
+/* Tile color palette — uses portfolio accent colors with progressive intensity */
+.tile[data-v="2"]    { background: linear-gradient(135deg, #1a1a26, #14141e); color: var(--wh2); font-size: 32px; }
+.tile[data-v="4"]    { background: linear-gradient(135deg, #232336, #1a1a28); color: var(--wh); font-size: 32px; }
+.tile[data-v="8"]    { background: linear-gradient(135deg, #00D9E8, #009ca8); color: #06121a; font-size: 32px; }
+.tile[data-v="16"]   { background: linear-gradient(135deg, #00B8C5, #007a85); color: #06121a; font-size: 30px; }
+.tile[data-v="32"]   { background: linear-gradient(135deg, #FFC906, #d99a00); color: #1a1100; font-size: 30px; }
+.tile[data-v="64"]   { background: linear-gradient(135deg, #FF965F, #c97246); color: #1a0805; font-size: 30px; }
+.tile[data-v="128"]  { background: linear-gradient(135deg, #FF6A2A, #d94d12); color: #fff; font-size: 26px; box-shadow: 0 0 22px rgba(255,106,42,0.35), inset 0 1px 0 rgba(255,255,255,0.18); }
+.tile[data-v="256"]  { background: linear-gradient(135deg, #FF4D00, #b83400); color: #fff; font-size: 26px; box-shadow: 0 0 26px rgba(255,77,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2); }
+.tile[data-v="512"]  { background: linear-gradient(135deg, #E8002D, #99001e); color: #fff; font-size: 26px; box-shadow: 0 0 28px rgba(232,0,45,0.4), inset 0 1px 0 rgba(255,255,255,0.2); }
+.tile[data-v="1024"] { background: linear-gradient(135deg, #9467BD, #5e3e7e); color: #fff; font-size: 22px; box-shadow: 0 0 32px rgba(148,103,189,0.5), inset 0 1px 0 rgba(255,255,255,0.2); }
+.tile[data-v="2048"] { background: linear-gradient(135deg, #FF6A2A, #00D9E8); color: #fff; font-size: 22px; box-shadow: 0 0 38px rgba(255,106,42,0.6), inset 0 1px 0 rgba(255,255,255,0.25); animation: rainbowGlow 2s ease-in-out infinite; }
+.tile[data-v="4096"], .tile[data-v="8192"] {
+  background: linear-gradient(135deg, #00D9E8, #9467BD, #FF6A2A);
+  background-size: 200% 200%;
+  color: #fff; font-size: 20px;
+  animation: rainbowGlow 2s ease-in-out infinite;
+}
+
+@keyframes rainbowGlow {
+  0%, 100% { background-position: 0% 50%; box-shadow: 0 0 38px rgba(255,106,42,0.5), inset 0 1px 0 rgba(255,255,255,0.25); }
+  50%      { background-position: 100% 50%; box-shadow: 0 0 50px rgba(0,217,232,0.6), inset 0 1px 0 rgba(255,255,255,0.25); }
+}
+
+@media (max-width: 640px) {
+  .board { width: 100%; aspect-ratio: 1 / 1; height: auto; }
+  .tile { font-size: 26px !important; }
+}

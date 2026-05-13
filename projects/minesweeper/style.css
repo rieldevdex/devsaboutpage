@@ -1,0 +1,85 @@
+/* Minesweeper — game-specific */
+
+.ms-board {
+  display: grid;
+  gap: 2px;
+  padding: 8px;
+  background: var(--bg2);
+  border-radius: var(--radius-md);
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.cell {
+  width: 28px;
+  height: 28px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.12s, transform 0.08s;
+}
+.cell:hover:not(.revealed):not(.flag) { background: rgba(255,255,255,0.10); }
+.cell:active { transform: scale(0.95); }
+
+.cell.revealed {
+  background: rgba(255,255,255,0.02);
+  border-color: rgba(255,255,255,0.04);
+  cursor: default;
+}
+.cell.flag {
+  background: rgba(255,106,42,0.15);
+  border-color: rgba(255,106,42,0.4);
+  color: var(--or);
+  font-size: 13px;
+}
+.cell.mine {
+  background: rgba(232,0,45,0.25);
+  border-color: rgba(232,0,45,0.6);
+  color: #fff;
+  animation: mineBoom 0.4s var(--ease);
+}
+.cell.mine.exploded {
+  background: var(--bad);
+  animation: mineExplode 0.5s var(--ease);
+}
+.cell.wrong-flag::after {
+  content: "✕";
+  position: absolute;
+  color: var(--bad);
+  font-size: 18px;
+  font-weight: 800;
+}
+.cell { position: relative; }
+
+/* Number colors by adjacent count */
+.cell[data-n="1"] { color: #4FC3F7; }
+.cell[data-n="2"] { color: #66BB6A; }
+.cell[data-n="3"] { color: #FF6A2A; }
+.cell[data-n="4"] { color: #9467BD; }
+.cell[data-n="5"] { color: #E8002D; }
+.cell[data-n="6"] { color: #00D9E8; }
+.cell[data-n="7"] { color: #FFC906; }
+.cell[data-n="8"] { color: #fff; }
+
+.cell.reveal-anim {
+  animation: cellReveal 0.18s var(--ease);
+}
+
+@keyframes cellReveal { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes mineBoom   { 0% { transform: scale(0.4); } 60% { transform: scale(1.2); } 100% { transform: scale(1); } }
+@keyframes mineExplode {
+  0%   { transform: scale(0.5); }
+  40%  { transform: scale(1.3); box-shadow: 0 0 24px var(--bad); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 640px) {
+  .cell { width: 24px; height: 24px; font-size: 12px; }
+}

@@ -1,0 +1,14 @@
+#game {
+  display: block;
+  width: 480px;
+  height: 560px;
+  max-width: 100%;
+  background: var(--bg2);
+  cursor: none;
+}
+.arcade-stage { width: max-content; max-width: 100%; }
+
+@media (max-width: 640px) {
+  #game { width: 100%; height: auto; aspect-ratio: 480 / 560; }
+  .arcade-stage { width: 100%; }
+}

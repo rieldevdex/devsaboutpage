@@ -1,0 +1,76 @@
+/* Flappy Chick — game-specific styles (unified design) */
+
+#game {
+  display: block;
+  width: 400px;
+  height: 600px;
+  max-width: 100%;
+  background: #0c0c14; /* sky is drawn on canvas */
+}
+.arcade-stage { width: max-content; max-width: 100%; }
+
+/* HUD */
+#hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  padding: 16px;
+  z-index: 5;
+}
+#hud.hidden { display: none; }
+
+.fb-score-display {
+  text-align: center;
+  margin-top: 6px;
+}
+.fb-score-display #score {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 56px;
+  color: var(--wh);
+  letter-spacing: -2px;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.5), 0 0 24px rgba(255,106,42,0.25);
+}
+
+.fb-side-badges {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+}
+
+#powerupBar {
+  position: absolute;
+  bottom: 110px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.pu-pill {
+  background: rgba(8,8,14,0.78);
+  border: 1px solid var(--border2);
+  color: var(--wh);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: pulse 1.2s infinite;
+}
+.pu-pill.shield { border-color: rgba(0,217,232,0.5); box-shadow: 0 0 18px rgba(0,217,232,0.3); }
+.pu-pill.slowmo { border-color: rgba(148,103,189,0.5); box-shadow: 0 0 18px rgba(148,103,189,0.3); }
+.pu-pill.magnet { border-color: rgba(255,106,42,0.5); box-shadow: 0 0 18px rgba(255,106,42,0.3); }
+
+@media (max-width: 640px) {
+  #game { width: 100%; height: auto; aspect-ratio: 400 / 600; }
+  .arcade-stage { width: 100%; }
+}

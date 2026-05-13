@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Minesweeper — Dev Arcade</title>
+<link rel="stylesheet" href="../_shared/arcade.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="arcade-app">
+    <div class="arcade-header">
+      <div class="arcade-title">Mine<span class="accent">sweeper</span><span class="dim">.</span></div>
+      <span class="arcade-kicker">Logic Puzzle</span>
+      <div class="arcade-actions" id="actions">
+        <button class="btn btn-ghost" id="newGameBtn">New Game</button>
+      </div>
+    </div>
+
+    <div class="arcade-flex">
+      <div class="arcade-stage" id="stage">
+        <div class="ms-board" id="board"></div>
+
+        <div class="overlay" id="menu">
+          <div class="overlay-card">
+            <h2>Minesweeper</h2>
+            <div class="overlay-sub">Pick a difficulty.</div>
+            <div class="mode-grid" id="diffGrid">
+              <button class="mode-btn selected" data-d="easy"><div class="m-title">Easy</div><div class="m-desc">9×9 · 10 mines</div></button>
+              <button class="mode-btn" data-d="medium"><div class="m-title">Medium</div><div class="m-desc">12×12 · 22 mines</div></button>
+              <button class="mode-btn" data-d="hard"><div class="m-title">Hard</div><div class="m-desc">16×16 · 50 mines</div></button>
+            </div>
+            <button class="btn btn-primary" id="startBtn">Start →</button>
+            <div class="overlay-hint">Click reveal · Right-click flag · Long-press flag on touch</div>
+          </div>
+        </div>
+
+        <div class="overlay hidden" id="result">
+          <div class="overlay-card">
+            <h2 id="resultTitle">You win!</h2>
+            <span class="new-best hidden" id="newBest">New Best Time</span>
+            <div class="overlay-stats">
+              <div><span class="lbl">Time</span><span class="val" id="rTime">0:00</span></div>
+              <div><span class="lbl">Best</span><span class="val" id="rBest">—</span></div>
+              <div><span class="lbl">Diff</span><span class="val" id="rDiff" style="font-size:14px">Easy</span></div>
+            </div>
+            <button class="btn btn-primary" id="playAgainBtn">Play again</button>
+            <button class="btn btn-ghost" id="changeDiffBtn">Change difficulty</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="arcade-panel">
+        <div class="stat-box"><div class="stat-label">Mines Left</div><div class="stat-value or" id="minesLeft">10</div></div>
+        <div class="stat-box"><div class="stat-label">Time</div><div class="stat-value cy" id="time">0:00</div></div>
+        <div class="stat-box"><div class="stat-label">Difficulty</div><div class="stat-value" id="diffBadge" style="font-size:14px">Easy</div></div>
+        <div class="stat-box"><div class="stat-label">Best</div><div class="stat-value" id="bestBadge" style="font-size:14px">—</div></div>
+        <div class="controls-list">
+          <div class="controls-list-title">Controls</div>
+          <div><span class="kbd">click</span> reveal</div>
+          <div><span class="kbd">R-click</span> flag</div>
+          <div><span class="kbd">long-press</span> flag (touch)</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="../_shared/arcade.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

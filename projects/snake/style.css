@@ -1,0 +1,20 @@
+/* Snake — game-specific styles */
+
+#game {
+  display: block;
+  width: 440px;
+  height: 440px;
+  max-width: 100%;
+  background: var(--bg2);
+  image-rendering: pixelated;
+}
+
+.arcade-stage {
+  width: max-content;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  #game { width: 100%; height: auto; aspect-ratio: 1 / 1; }
+  .arcade-stage { width: 100%; }
+}

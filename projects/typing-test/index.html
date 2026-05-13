@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Typing Test — Dev Arcade</title>
+<link rel="stylesheet" href="../_shared/arcade.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="arcade-app">
+    <div class="arcade-header">
+      <div class="arcade-title">Typing<span class="dim"> Test.</span></div>
+      <span class="arcade-kicker">WPM · Accuracy</span>
+      <div class="arcade-actions" id="actions">
+        <button class="btn btn-ghost" id="restartBtn">↻ Restart</button>
+      </div>
+    </div>
+
+    <div class="arcade-flex">
+      <div class="arcade-stage" id="stage">
+        <div class="tt-wrap">
+          <div class="tt-modes" id="modeGrid">
+            <button class="mode-btn selected" data-time="15"><div class="m-title">15s</div></button>
+            <button class="mode-btn" data-time="30"><div class="m-title">30s</div></button>
+            <button class="mode-btn" data-time="60"><div class="m-title">60s</div></button>
+            <button class="mode-btn" data-time="120"><div class="m-title">120s</div></button>
+          </div>
+
+          <div class="tt-text" id="textArea" tabindex="0"></div>
+
+          <div class="tt-bar">
+            <div class="tt-bar-fill" id="barFill"></div>
+          </div>
+
+          <div class="tt-prompt" id="prompt">Click the text and start typing to begin.</div>
+        </div>
+
+        <div class="overlay hidden" id="result">
+          <div class="overlay-card">
+            <h2>Time's up</h2>
+            <span class="new-best hidden" id="newBest">New Best WPM</span>
+            <div class="overlay-stats">
+              <div><span class="lbl">WPM</span><span class="val" id="rWpm">0</span></div>
+              <div><span class="lbl">Accuracy</span><span class="val" id="rAcc">0%</span></div>
+              <div><span class="lbl">Streak</span><span class="val" id="rStreak">0</span></div>
+            </div>
+            <button class="btn btn-primary" id="restartBtn2">Try again</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="arcade-panel">
+        <div class="stat-box"><div class="stat-label">WPM</div><div class="stat-value or" id="wpm">0</div></div>
+        <div class="stat-box"><div class="stat-label">Accuracy</div><div class="stat-value cy" id="acc">100%</div></div>
+        <div class="stat-box"><div class="stat-label">Time Left</div><div class="stat-value" id="time">15</div></div>
+        <div class="stat-box"><div class="stat-label">Streak</div><div class="stat-value" id="streak">0</div></div>
+        <div class="stat-box"><div class="stat-label">Best WPM</div><div class="stat-value" id="best" style="font-size:18px">0</div></div>
+        <div class="controls-list">
+          <div class="controls-list-title">How it works</div>
+          <div>Type the visible text</div>
+          <div>Backspace to fix</div>
+          <div>Timer starts on first key</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="../_shared/arcade.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
